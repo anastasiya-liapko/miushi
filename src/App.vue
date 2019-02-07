@@ -11,10 +11,28 @@
   import Footer from './components/shared/Footer.vue';
 
   export default {
+    // data: function() {
+    //   return {
+    //     show: false
+    //   }
+    // },
+    // created: function () {
+    //   window.addEventListener('resize', this.handleResize);
+    //   this.handleResize();
+    // },
+    // beforeDestroy: function () {
+    //   window.removeEventListener('resize', this.handleResize);
+    // },
     components: {
       'app-header': Header,
       'app-footer': Footer
     }
+    // methods: {
+    //   handleResize (event) {
+    //     var width = document.documentElement.clientWidth;
+    //     width >= 992 ? this.show = true : this.show = false;
+    //   }
+    // }
   }
 </script>
 
@@ -32,6 +50,10 @@
     font-weight: 400
     line-height: normal
     color: rgb(0, 0, 0)
+
+  img
+    width: 100%
+    height: auto
 
   .container
     padding: 0

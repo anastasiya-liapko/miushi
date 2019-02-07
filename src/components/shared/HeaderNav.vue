@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav row col-8">
+  <ul class="nav row col-12 col-lg-8">
     <li class="flex-grow-1" v-for="item in navItems">
       <a href="#">
         <span>{{ item }}</span>
