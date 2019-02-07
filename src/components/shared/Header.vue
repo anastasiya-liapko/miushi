@@ -78,7 +78,7 @@
         display: none
 
     .burger
-      margin-right: 30px
+      margin-right: 55px
 
 
   @media(max-width: 575px)
@@ -88,6 +88,6 @@
       padding-bottom: 5px
 
     .burger
-      margin-right: 20px
+      margin-right: 45px
   
 </style>

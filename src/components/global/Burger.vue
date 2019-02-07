@@ -56,8 +56,8 @@
     
   .burger__icon.animate:before
     bottom: 0
-    -webkit-transform: rotate(-45deg)
-            transform: rotate(-45deg)
+    -webkit-transform: rotate(-45deg)  
+    transform: rotate(-45deg) 
     transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
     transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
     transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
@@ -65,7 +65,7 @@
   .burger__icon.animate:after 
     top: 0
     -webkit-transform: rotate(45deg)
-            transform: rotate(45deg)
+    transform: rotate(45deg)
     transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
     transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
     transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)

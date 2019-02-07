@@ -22,7 +22,6 @@
     span
       position: relative
       padding-left: 40px
-      line-height: 22px
     span::before
       content: ""
       position: absolute
@@ -51,6 +50,8 @@
   @media(max-width: 991px)
     .user__cabinet,
     .user__cart
+      width: 23px
+      height: 22px
       span
         padding-left: 23px
         font-size: 0
