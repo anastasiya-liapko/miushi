@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <div class="container">
-      <app-header></app-header>
-      <p class="text-center">Hello World!</p>
-      <app-footer></app-footer>
-    </div>
+    <app-header></app-header>
+    <p class="text-center">Hello World!</p>
+    <app-footer></app-footer>
   </div>
 </template>
 
@@ -22,7 +20,30 @@
 
 <style lang="sass">
   #app 
-    font-family: 'Roboto', Arial, sans-serif
-    color: black
-    background-color: white
+    font-family: 'Open Sans', sans-serif
+    font-size: 0.875rem
+    font-weight: 400
+    line-height: normal
+    color: rgb(0, 0, 0)
+    background-color: rgb(255, 255, 255)
+  
+  a
+    font-size: 0.875rem
+    font-weight: 400
+    line-height: normal
+    color: rgb(0, 0, 0)
+
+  .container
+    padding: 0
+
+  .row,
+  .col,
+  p
+    margin: 0
+    padding: 0
+
+  .iconmoon
+    width: 30px
+    height: 30px
+    border: 1px solid green
 </style>
