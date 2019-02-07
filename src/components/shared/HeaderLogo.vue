@@ -1,7 +1,13 @@
 <template>
   <div class="logo">
-    <img class="logo__desktop" src="../../assets/img/miushi-logo-desktop.png" alt="logo">
-    <img class="logo__mobile" src="../../assets/img/miushi-logo-mobile.png" alt="logo">
+    <img 
+        class="logo__desktop" 
+        src="../../assets/img/miushi-logo-desktop.png" 
+        alt="logo">
+    <img 
+        class="logo__mobile" 
+        src="../../assets/img/miushi-logo-mobile.png" 
+        alt="logo">
   </div>
 </template>
 
