@@ -2,7 +2,7 @@
   <div>
     <button class="btn btn_green row flex-nowrap" type="button">
       <span>Обратный звонок</span>
-      <i class="icomoon"></i>
+      <!-- <i class="icomoon"></i> -->
     </button>
   </div>
 </template>

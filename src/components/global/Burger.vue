@@ -1,73 +1,60 @@
 <template>
-  <button class="burger btn" type="button" @click="show = !show">
-    <span class="burger__icon" :class="{animate: show}"></span>
+  <button class="hamburger hamburger--elastic btn" type="button" @click="switchShow" :class="{isActive: show}">
+  <!-- <button class="hamburger hamburger--elastic btn" type="button" @click="switchFn()" :class="{isActive: show}"> -->
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
   </button>
 </template>
 
 <script>
+  import { eventBus } from '../../main.js';
+
   export default {
-    props: ['show']
+    props: {
+      show: Boolean, 
+      switchFn: Function
+    },
+    methods: {
+      switchShow() {
+        this.show = !this.show;
+        // this.$emit('burgerClick', this.show);
+        // eventBus.$emit('burgerClick', this.show);
+        eventBus.switchShow(this.show);
+      }
+    }
   }
 </script>
 
 <style lang="sass">
-  .burger
+  .hamburger,
+  .hamburger-box
     width: 20px
-    height: 20px
+    height: 18px
     padding: 0
-  .burger:hover
+  .hamburger:hover
     cursor: pointer
-  .burger:active
+  .hamburger:active
     background-color: transparent
-  .burger:focus
+  .hamburger:focus
     box-shadow: none
 
-  .burger__icon
-    position: relative
-    display: block
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after 
     width: 20px
     height: 2px
-    background: rgb(132, 198, 4)
-    transition: all 0ms 300ms
+    background-color: rgb(132, 198, 4)
 
-  .burger__icon:before, 
-  .burger__icon:after 
-    content: ""
-    position: absolute
-    left: 0
-    width: 20px
-    height: 2px
-    background: rgb(132, 198, 4)
-
-  .burger__icon:before 
-    bottom: 7px
-    transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1)
-
-  .burger__icon:after 
-    top: 7px
-    transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms cubic-bezier(0.23, 1, 0.32, 1)
-
-  .burger__icon.animate 
-    background: rgba(0, 0, 0, 0)
-    
-  .burger__icon.animate:before
-    bottom: 0
-    -webkit-transform: rotate(-45deg)  
-    transform: rotate(-45deg) 
-    transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
-
-  .burger__icon.animate:after 
+  .hamburger--elastic .hamburger-inner 
     top: 0
-    -webkit-transform: rotate(45deg)
-    transform: rotate(45deg)
-    transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
-    transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), -webkit-transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1)
+  .hamburger--elastic .hamburger-inner::before
+    top: 7px
+  .hamburger--elastic .hamburger-inner::after 
+    top: 14px
 
+  .hamburger--elastic.isActive .hamburger-inner
+    transform: translate3d(0, 7px, 0) rotate(135deg)
+  .hamburger--elastic.isActive .hamburger-inner::after
+    transform: translate3d(0, -14px, 0) rotate(-270deg)
 </style>

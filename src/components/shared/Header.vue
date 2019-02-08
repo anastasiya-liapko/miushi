@@ -1,17 +1,18 @@
 <template>
   <div class="header">
 
-    <div class="header__desktop d-lg-block" v-show="show">
-      <div class="header__top order-2">
+    <div class="header__desktop d-lg-flex" v-show="show">
+      <div class="header__top order-2 order-lg-1">
         <div class="container">
           <div class="row flex-nowrap justify-content-between">
+            <app-header-burger :show="show" @burgerClick="show = $event"></app-header-burger>
             <app-header-logo></app-header-logo>
             <app-header-contacts></app-header-contacts>
           </div>
         </div>
       </div><!-- header__top -->
 
-      <div class="header__bottom order-1">
+      <div class="header__bottom order-1 order-lg-2">
         <div class="container">
           <div class="row flex-nowrap">
             <app-header-nav></app-header-nav>
@@ -24,7 +25,8 @@
     <div class="header__mobile d-lg-none">
       <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <app-header-burger :show="show"></app-header-burger>
+          <app-header-burger :show="show" @burgerClick="show = $event" :class="{'d-none': show}"></app-header-burger>
+          <!-- <app-header-burger :switchFn="switchShow"></app-header-burger> -->
           <app-header-logo></app-header-logo>
           <app-header-user></app-header-user>
         </div>
@@ -41,11 +43,24 @@
   import HeaderUser from './HeaderUser.vue';
   import HeaderBurger from '../global/Burger.vue';
 
+  import { eventBus } from '../../main.js';
+
+
   export default {
     data: function () {
       return {
         show: false
       }
+    },
+    methods: {
+      switchShow() {
+        this.show = !this.show;
+      }
+    },
+    created() {
+      eventBus.$on('burgerClick', (show) => {
+        this.show = show;
+      });
     },
     components: {
       'app-header-logo': HeaderLogo,
@@ -59,7 +74,7 @@
 
 <style lang="sass" scoped>
   .header
-    padding-top: 10px
+    padding-top: 10px    
 
   .header__bottom
     margin-top: 20px
@@ -67,27 +82,45 @@
 
 
   @media(max-width: 991px)
-
     .header
+      position: relative
       padding-top: 15px
       padding-bottom: 15px
 
     .header__desktop
+      position: absolute
+      top: 0
+      left: 0
+      display: flex
+      flex-direction: column
+      width: 380px
+      height: 600px
+      background-color: rgb(255, 255, 255)
+      border: 1px solid red
+      .container
+        padding: 25px
       .logo,
       .user
         display: none
 
-    .burger
+    .header__bottom
+      margin-top: 0
+      border: none
+
+    .hamburger
       margin-right: 55px
 
 
   @media(max-width: 575px)
-  
     .header 
       padding-top: 5px
       padding-bottom: 5px
 
-    .burger
+    .header__desktop
+      width: auto
+      height: auto
+
+    .hamburger
       margin-right: 45px
   
 </style>

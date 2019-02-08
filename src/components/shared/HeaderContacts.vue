@@ -1,5 +1,5 @@
 <template>
-  <div class="contacts row flex-nowrap flex-grow-1 justify-content-between align-items-center">
+  <div class="contacts row flex-nowrap flex-column flex-lg-row flex-grow-1 justify-content-between align-items-center">
 
     <p class="contacts__address address row align-items-center">
       <span>г.Курск, ул.Ленина, д.3</span>
@@ -32,7 +32,8 @@
 </script>
 
 <style lang="sass">
-  .contacts
+  .contacts,
+  .contacts p
     border: 1px solid red
   .contacts__phone
     span:first-child
@@ -68,5 +69,9 @@
       height: 9px
       margin-top: -4px
       background-image: url(../../assets/img/envelope.png)
+
+
+  // @media(max-width: 991px)
+    
 
 </style>

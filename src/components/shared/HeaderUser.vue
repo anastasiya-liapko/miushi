@@ -47,6 +47,7 @@
       margin-top: -10px
       background-image: url(../../assets/img/cart.png)
 
+
   @media(max-width: 991px)
     .user__cabinet,
     .user__cart
@@ -59,9 +60,9 @@
     .user__cart
       margin-left: 30px
 
+
   @media(max-width: 575px)
     .user__cart
       margin-left: 20px
-
 
 </style>

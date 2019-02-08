@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav row col-12 col-lg-8">
+  <ul class="nav row flex-column flex-lg-row col-12 col-lg-8">
     <li class="nav__item flex-grow-1" v-for="(item, i) in navItems">
       <a href="#">
         <span :class="{icon_down: item === 'меню'}">{{ item }}</span>
