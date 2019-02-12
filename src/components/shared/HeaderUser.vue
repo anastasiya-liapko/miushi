@@ -1,22 +1,28 @@
 <template>
   <div class="user row flex-nowrap flex-lg-grow-1">
     <p class="user__cabinet cabinet row col-lg-6 justify-content-center align-items-center">
-      <span>Кабинет</span>
+      <span @click="switchPage('app-cabinet')">Кабинет</span>
     </p>
     <p class="user__cart cart row col-lg-6 justify-content-center align-items-center">
-      <span>Корзина</span>
+      <span @click="switchPage('app-cart')">Корзина</span>
     </p>
   </div>
 </template>
 
 <script>
+  import { eventBus } from '../../main.js';
 
+
+  export default {
+    methods: {
+      switchPage(page) {
+        eventBus.switchPage(page);
+      }
+    }
+  }
 </script>
 
 <style lang="sass" scoped>
-  div, p
-    border: 1px solid red
-
   .cabinet,
   .cart
     span

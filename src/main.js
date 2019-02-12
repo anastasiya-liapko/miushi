@@ -21,6 +21,9 @@ export const eventBus = new Vue({
   methods: {
     switchShow(show) {
       this.$emit('burgerClick', show);
+    },
+    switchPage(selectedPage) {
+      this.$emit('selectPage', selectedPage);
     }
   }
 });

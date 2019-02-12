@@ -1,11 +1,10 @@
 <template>
   <div class="header">
 
-    <div class="header__desktop d-lg-flex" v-show="show">
+    <div class="header__desktop d-lg-flex flex-column" v-show="show">
       <div class="header__top order-2 order-lg-1">
         <div class="container">
           <div class="row flex-nowrap justify-content-between">
-            <app-header-burger :show="show" @burgerClick="show = $event"></app-header-burger>
             <app-header-logo></app-header-logo>
             <app-header-contacts></app-header-contacts>
           </div>
@@ -20,12 +19,12 @@
           </div>
         </div>
       </div><!-- header__bottom -->
-    </div>
+    </div><!-- header__desktop -->
 
     <div class="header__mobile d-lg-none">
       <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <app-header-burger :show="show" @burgerClick="show = $event" :class="{'d-none': show}"></app-header-burger>
+          <app-header-burger :show="show" @burgerClick="show = $event"></app-header-burger>
           <!-- <app-header-burger :switchFn="switchShow"></app-header-burger> -->
           <app-header-logo></app-header-logo>
           <app-header-user></app-header-user>
@@ -88,13 +87,14 @@
       padding-bottom: 15px
 
     .header__desktop
+      z-index: 1
       position: absolute
       top: 0
       left: 0
       display: flex
       flex-direction: column
       width: 380px
-      height: 600px
+      height: auto
       background-color: rgb(255, 255, 255)
       border: 1px solid red
       .container
@@ -104,10 +104,12 @@
         display: none
 
     .header__bottom
-      margin-top: 0
+      margin-top: 40px
+      margin-bottom: 40px
       border: none
 
     .hamburger
+      z-index: 1
       margin-right: 55px
 
 
@@ -117,7 +119,7 @@
       padding-bottom: 5px
 
     .header__desktop
-      width: auto
+      width: 100%
       height: auto
 
     .hamburger

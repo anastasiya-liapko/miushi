@@ -1,77 +1,121 @@
 <template>
   <ul class="nav row flex-column flex-lg-row col-12 col-lg-8">
-    <li class="nav__item flex-grow-1" v-for="(item, i) in navItems">
+    <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems" :key="i" @click="dropdown">
       <a href="#">
-        <span :class="{icon_down: item === 'меню'}">{{ item }}</span>
+        <span :class="{icon_down: navItem.length > 0}">{{ navItem[0] }}</span>
       </a>
-      <ul class="dropdown row flex-column" v-show="show" v-for="n in 5">
-        <li class="dropdown__item">
-          <a href="#">{{ n }}</a>
-        </li>
-      </ul>
+      <app-header-nav-dropdown :dropdownItems="navItem[1]"></app-header-nav-dropdown>
     </li>
   </ul>
 </template>
 
 <script>
+  import HeaderNavDropdown from './HeaderNavDropdown.vue';
+
+
   export default {
     data: function() {
       return {
         show: false,
-        navItems: ['меню', 'акции и скидки', 'доставка и оплата', 'новости', 'контакты']
+        drop: false,
+        navItems: [
+          {
+            0: 'меню',
+            1: ['сеты', 'роллы', 'вок', 'пицца']
+          },
+          {
+            0: 'акции и скидки'
+          },
+          {
+            0: 'доставка и оплата',
+            1: ['сеты', 'роллы', 'вок', 'пицца']
+          },
+          {
+            0: 'новости'
+          },
+          {
+            0: 'контакты'
+          }
+        ]
+
       }
+    },
+    methods: {
+      dropdown(e) {
+        var element = e.target;
+  
+        while (!element.classList.contains('nav__item')) {
+          element = element.parentNode;
+        }
+
+        var dropdowns = document.querySelectorAll('.dropdown');
+
+        dropdowns.forEach(function (item, key) {
+          item.classList.add('d-none');
+        });
+
+        element.querySelector('.dropdown').classList.remove('d-none');
+        
+      }
+    },
+    components: {
+      'app-header-nav-dropdown': HeaderNavDropdown
     }
   }
 
 </script>
 
-<style lang="sass" scoped>
-  .nav
-    border: 1px solid blue
-    .nav__item
-      height: 50px
-      list-style: none
-      border: 1px solid red
-      a
-        display: inline-block
-        width: 100%
-        line-height: 50px
-        text-align: center
-        text-transform: uppercase
-      a:hover
+<style lang="sass">
+  .nav__item
+    position: relative
+    list-style: none
+    a
+      display: inline-block
+      width: 100%
+      line-height: 50px
+      text-align: center
+      text-transform: uppercase
+      &:hover
         color: rgb(255, 255, 255)
         background-color: rgb(132, 198, 4)
         text-decoration: none
-      a:hover .icon_down::before,
-      a:hover .icon_down::after
+      &:hover .icon_down::before,
+      &:hover .icon_down::after
         background-color: rgb(255, 255, 255)
+    a.isActive
+      color: rgb(255, 255, 255)
+      background-color: rgb(132, 198, 4)
+      text-decoration: none
 
   .icon_down
     position: relative
     padding-right: 15px
-  .icon_down::before
-    content: ""
-    position: absolute
-    top: 50%
-    right: 0
-    width: 8px
-    height: 1px
-    margin-top: -1px
-    // margin-right: -5px
-    background-color: rgb(0, 0, 0)
-    transform: rotate(45deg)
+    &::before
+      content: ""
+      position: absolute
+      top: 50%
+      right: 0
+      width: 8px
+      height: 1px
+      margin-top: -1px
+      background-color: rgb(0, 0, 0)
+      transform: rotate(45deg)
+    &::after
+      content: ""
+      position: absolute
+      top: 50%
+      right: 0
+      width: 8px
+      height: 1px
+      margin-top: -1px
+      margin-right: -5px
+      background-color: rgb(0, 0, 0)
+      transform: rotate(-45deg)
 
-  .icon_down::after
-    content: ""
-    position: absolute
-    top: 50%
-    right: 0
-    width: 8px
-    height: 1px
-    margin-top: -1px
-    margin-right: -5px
-    background-color: rgb(0, 0, 0)
-    transform: rotate(-45deg)
 
+  @media(max-width: 991px)
+    .nav__item
+      a
+        text-align: left
 
 </style>

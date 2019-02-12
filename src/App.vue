@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <p class="text-center">Hello World!</p>
+
+    <keep-alive>
+      <component :is="selectedPage">
+      </component>
+    </keep-alive>
+
     <app-footer></app-footer>
   </div>
 </template>
@@ -10,10 +15,30 @@
   import Header from './components/shared/Header.vue';
   import Footer from './components/shared/Footer.vue';
 
+  import Main from './components/server/Main.vue';
+  import Cart from './components/server/Cart.vue';
+  import Cabinet from './components/server/Cabinet.vue';
+
+  import { eventBus } from './main.js';
+
+
   export default {
+    data: function () {
+      return {
+        selectedPage: 'app-main'
+      }
+    },
+    created() {
+      eventBus.$on('selectPage', (page) => {
+        this.selectedPage = page;
+      });
+    },
     components: {
       'app-header': Header,
-      'app-footer': Footer
+      'app-footer': Footer,
+      'app-main': Main,
+      'app-cart': Cart,
+      'app-cabinet': Cabinet
     }
   }
 </script>

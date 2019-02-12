@@ -1,7 +1,7 @@
 <template>
   <button class="hamburger hamburger--elastic btn" type="button" @click="switchShow" :class="{isActive: show}">
   <!-- <button class="hamburger hamburger--elastic btn" type="button" @click="switchFn()" :class="{isActive: show}"> -->
-    <span class="hamburger-box">
+    <span class="hamburger-box" :class="{'opened': show}">
       <span class="hamburger-inner"></span>
     </span>
   </button>
@@ -32,12 +32,14 @@
     width: 20px
     height: 18px
     padding: 0
-  .hamburger:hover
-    cursor: pointer
-  .hamburger:active
-    background-color: transparent
-  .hamburger:focus
-    box-shadow: none
+
+  .hamburger  
+    &:hover
+      cursor: pointer
+    &:active
+      background-color: transparent
+    &:focus
+      box-shadow: none
 
   .hamburger-inner,
   .hamburger-inner::before,
@@ -48,13 +50,27 @@
 
   .hamburger--elastic .hamburger-inner 
     top: 0
-  .hamburger--elastic .hamburger-inner::before
-    top: 7px
-  .hamburger--elastic .hamburger-inner::after 
-    top: 14px
+    &::before
+      top: 7px
+    &::after 
+      top: 14px
 
   .hamburger--elastic.isActive .hamburger-inner
     transform: translate3d(0, 7px, 0) rotate(135deg)
-  .hamburger--elastic.isActive .hamburger-inner::after
-    transform: translate3d(0, -14px, 0) rotate(-270deg)
+    background-color: rgb(174, 174, 174)
+    &::after
+      transform: translate3d(0, -14px, 0) rotate(-270deg)
+      background-color: rgb(174, 174, 174)
+
+  .opened
+    position: absolute
+    top: 25px
+    left: 335px
+
+
+  @media(max-width: 575px)
+    .opened
+      left: auto
+      right: 25px
+
 </style>

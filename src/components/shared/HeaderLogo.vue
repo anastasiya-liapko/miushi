@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="logo" @click="switchPage('app-main')">
     <img 
         class="logo__desktop" 
         src="../../assets/img/miushi-logo-desktop.png" 
@@ -12,8 +12,16 @@
 </template>
 
 <script>
+  import { eventBus } from '../../main.js';
+
+
   export default {
-    props: ['mobile']
+    props: ['mobile'],
+    methods: {
+      switchPage(page) {
+        eventBus.switchPage(page);
+      }
+    }
   }
 </script>
 
@@ -22,7 +30,8 @@
     width: 190px
     height: 70px
     margin-right: 55px
-    border: 1px solid red
+    &:hover
+      cursor: pointer
   .logo__mobile
     display: none
 
