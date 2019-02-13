@@ -23,12 +23,12 @@
 
 
   export default {
-    data: function () {
+    data: function() {
       return {
         selectedPage: 'app-main'
       }
     },
-    created() {
+    created: function() {
       eventBus.$on('selectPage', (page) => {
         this.selectedPage = page;
       });

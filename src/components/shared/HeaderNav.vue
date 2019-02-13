@@ -1,6 +1,6 @@
 <template>
   <ul class="nav row flex-column flex-lg-row col-12 col-lg-8">
-    <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems" :key="i" @click="dropdown">
+    <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems">
       <a href="#">
         <span :class="{icon_down: navItem.length > 0}">{{ navItem[0] }}</span>
       </a>
@@ -16,8 +16,6 @@
   export default {
     data: function() {
       return {
-        show: false,
-        drop: false,
         navItems: [
           {
             0: 'меню',
@@ -37,25 +35,6 @@
             0: 'контакты'
           }
         ]
-
-      }
-    },
-    methods: {
-      dropdown(e) {
-        var element = e.target;
-  
-        while (!element.classList.contains('nav__item')) {
-          element = element.parentNode;
-        }
-
-        var dropdowns = document.querySelectorAll('.dropdown');
-
-        dropdowns.forEach(function (item, key) {
-          item.classList.add('d-none');
-        });
-
-        element.querySelector('.dropdown').classList.remove('d-none');
-        
       }
     },
     components: {
@@ -69,6 +48,8 @@
   .nav__item
     position: relative
     list-style: none
+    &:hover>.dropdown
+      display: block
     a
       display: inline-block
       width: 100%

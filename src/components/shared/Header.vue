@@ -46,17 +46,17 @@
 
 
   export default {
-    data: function () {
+    data: function() {
       return {
         show: false
       }
     },
     methods: {
-      switchShow() {
+      switchShow: function() {
         this.show = !this.show;
       }
     },
-    created() {
+    created: function() {
       eventBus.$on('burgerClick', (show) => {
         this.show = show;
       });
@@ -76,6 +76,7 @@
     padding-top: 10px    
 
   .header__bottom
+    height: 50px
     margin-top: 20px
     border-top: 1px solid rgb(242, 242, 242)
 
@@ -104,6 +105,7 @@
         display: none
 
     .header__bottom
+      height: auto
       margin-top: 40px
       margin-bottom: 40px
       border: none

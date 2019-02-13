@@ -15,7 +15,7 @@
 
   export default {
     methods: {
-      switchPage(page) {
+      switchPage: function(page) {
         eventBus.switchPage(page);
       }
     }

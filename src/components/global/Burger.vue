@@ -11,12 +11,16 @@
   import { eventBus } from '../../main.js';
 
   export default {
-    props: {
-      show: Boolean, 
-      switchFn: Function
+    data: function() {
+      return {
+        show: false
+      }
     },
+    // props: {
+    //   switchFn: Function
+    // },
     methods: {
-      switchShow() {
+      switchShow: function() {
         this.show = !this.show;
         // this.$emit('burgerClick', this.show);
         // eventBus.$emit('burgerClick', this.show);
@@ -63,6 +67,7 @@
       background-color: rgb(174, 174, 174)
 
   .opened
+    z-index: 1
     position: absolute
     top: 25px
     left: 335px

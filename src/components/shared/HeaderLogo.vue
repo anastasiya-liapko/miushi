@@ -18,7 +18,7 @@
   export default {
     props: ['mobile'],
     methods: {
-      switchPage(page) {
+      switchPage: function(page) {
         eventBus.switchPage(page);
       }
     }
