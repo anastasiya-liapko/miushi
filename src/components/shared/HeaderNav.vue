@@ -1,5 +1,6 @@
 <template>
   <ul class="nav row flex-column flex-lg-row col-12 col-lg-8">
+    <!-- <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems" @click="dropdown"> -->
     <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems">
       <a href="#">
         <span :class="{icon_down: navItem.length > 0}">{{ navItem[0] }}</span>
@@ -36,6 +37,24 @@
           }
         ]
       }
+    },
+    methods: {
+      // dropdown: function(e) {
+      //   var element = e.target;
+  
+      //   while (!element.classList.contains('nav__item')) {
+      //     element = element.parentNode;
+      //   }
+
+      //   var dropdowns = document.querySelectorAll('.dropdown');
+        
+      //   for (var i = 0; i < dropdowns.length; i++) {
+      //     dropdowns[i].classList.add('d-none');
+      //   }
+
+      //   element.querySelector('.dropdown').classList.remove('d-none');
+        
+      // }
     },
     components: {
       'app-header-nav-dropdown': HeaderNavDropdown

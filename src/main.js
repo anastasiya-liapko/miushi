@@ -19,6 +19,9 @@ export const eventBus = new Vue({
     // data is an object, not a function
   },
   methods: {
+    bodyClick: function(show) {
+      this.$emit('bodyClick', show);
+    },
     switchShow: function(show) {
       this.$emit('burgerClick', show);
     },

@@ -26,7 +26,6 @@
 
 
   @media(max-width: 991px)
-
     .dropdown
       position: static
 

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
 
-    <div class="header__desktop d-lg-flex flex-column" v-show="show">
+    <div id="js-menu" class="header__desktop d-lg-flex flex-column" v-show="show">
       <div class="header__top order-2 order-lg-1">
         <div class="container">
           <div class="row flex-nowrap justify-content-between">
@@ -9,7 +9,7 @@
             <app-header-contacts></app-header-contacts>
           </div>
         </div>
-      </div><!-- header__top -->
+      </div>
 
       <div class="header__bottom order-1 order-lg-2">
         <div class="container">
@@ -18,13 +18,13 @@
             <app-header-user></app-header-user>
           </div>
         </div>
-      </div><!-- header__bottom -->
-    </div><!-- header__desktop -->
+      </div>
+    </div>
 
     <div class="header__mobile d-lg-none">
       <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <app-header-burger :show="show" @burgerClick="show = $event"></app-header-burger>
+          <app-header-burger id="js-burger" :show="show" @burgerClick="show = $event"></app-header-burger>
           <!-- <app-header-burger :switchFn="switchShow"></app-header-burger> -->
           <app-header-logo></app-header-logo>
           <app-header-user></app-header-user>
@@ -51,15 +51,31 @@
         show: false
       }
     },
-    methods: {
-      switchShow: function() {
-        this.show = !this.show;
-      }
-    },
+    // methods: {
+    //   switchShow: function() {
+    //     this.show = !this.show;
+    //   }
+    // },
     created: function() {
       eventBus.$on('burgerClick', (show) => {
         this.show = show;
       });
+
+      window.addEventListener('mouseup', this.hide);
+    },
+    beforeDestroy: function () {
+      window.removeEventListener('mouseup', this.hide);
+    },
+    methods: {
+      hide: function(e) {
+        var menu = document.querySelector('#js-menu');
+        var burger = document.querySelector('#js-burger');
+
+        if (!menu.contains(e.target) && !burger.contains(e.target)){
+          this.show = false;
+          eventBus.bodyClick(this.show);
+        }
+      }
     },
     components: {
       'app-header-logo': HeaderLogo,
@@ -110,10 +126,6 @@
       margin-bottom: 40px
       border: none
 
-    .hamburger
-      z-index: 1
-      margin-right: 55px
-
 
   @media(max-width: 575px)
     .header 
@@ -124,7 +136,5 @@
       width: 100%
       height: auto
 
-    .hamburger
-      margin-right: 45px
   
 </style>

@@ -1,30 +1,40 @@
 <template>
-  <button class="hamburger hamburger--elastic btn" type="button" @click="switchShow" :class="{isActive: show}">
-  <!-- <button class="hamburger hamburger--elastic btn" type="button" @click="switchFn()" :class="{isActive: show}"> -->
-    <span class="hamburger-box" :class="{'opened': show}">
-      <span class="hamburger-inner"></span>
-    </span>
-  </button>
+  <div class="hamburger-wrapper">
+    <button class="hamburger hamburger--elastic btn" type="button" 
+            @click="switchShow" 
+            :class="{isActive: isShow, opened: isShow}">
+    <!-- <button class="hamburger hamburger--elastic btn" type="button" @click="switchFn()" :class="{isActive: show}"> -->
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+  </div>
 </template>
 
 <script>
   import { eventBus } from '../../main.js';
 
   export default {
+    props: {
+      show: Boolean
+      // switchFn: Function
+    },
     data: function() {
       return {
-        show: false
+        isShow: this.show
       }
     },
-    // props: {
-    //   switchFn: Function
-    // },
+    created: function() {
+      eventBus.$on('bodyClick', (show) => {
+        this.isShow = show;
+      });
+    },
     methods: {
       switchShow: function() {
-        this.show = !this.show;
+        this.isShow = !this.isShow;
         // this.$emit('burgerClick', this.show);
         // eventBus.$emit('burgerClick', this.show);
-        eventBus.switchShow(this.show);
+        eventBus.switchShow(this.isShow);
       }
     }
   }
@@ -32,12 +42,13 @@
 
 <style lang="sass">
   .hamburger,
-  .hamburger-box
+  .hamburger-box,
+  .hamburger-wrapper
     width: 20px
     height: 18px
     padding: 0
 
-  .hamburger  
+  .hamburger 
     &:hover
       cursor: pointer
     &:active
@@ -73,9 +84,18 @@
     left: 335px
 
 
+  @media(max-width: 991px)
+    .hamburger-wrapper
+      margin-right: 55px
+    
+
   @media(max-width: 575px)
+    .hamburger-wrapper
+      margin-right: 45px
+
     .opened
       left: auto
       right: 25px
+
 
 </style>
