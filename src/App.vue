@@ -68,6 +68,34 @@
     margin: 0
     padding: 0
 
+  .title
+    position: relative
+    padding: 0 110px
+    font-family: 'Shadows Into Light', cursive
+    font-size: 50px
+    line-height: normal
+    font-weight: 400
+    color: rgb(50, 80, 90)
+    border: 1px solid red
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      top: 50%
+      width: 109px
+      height: 40px
+      margin-top: -20px
+      background-repeat: no-repeat
+      background-position: center
+      background-size: cover
+      border: 1px solid green
+    &::before
+      left: 0
+      background-image: url('./assets/img/title-left-pic.png')
+    &::after
+      right: 0
+      background-image: url('./assets/img/title-right-pic.png')
+
   .icomoon
     width: 30px
     height: 30px
@@ -75,12 +103,15 @@
 
   .input
     height: 40px
+    padding-left: 15px
     font-size: 14px
     line-height: 24px
     font-weight: 400
     border: none
     &:focus
       outline: none
+    &::placeholder
+      color: rgb(0, 0, 0)
 
   .input_green
     border-bottom: 1px solid rgb(132, 198, 4)

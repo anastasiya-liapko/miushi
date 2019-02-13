@@ -16,8 +16,6 @@ import Vuelidate from 'vuelidate'
 // npm install vue-select
 import vSelect from 'vue-select'
 
-// npm install vue-dropdowns
-import dropdown from 'vue-dropdowns'
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
