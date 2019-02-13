@@ -95,6 +95,7 @@
     height: 50px
     margin-top: 20px
     border-top: 1px solid rgb(242, 242, 242)
+    border-bottom: 1px solid rgb(242, 242, 242)
 
 
   @media(max-width: 991px)

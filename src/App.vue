@@ -73,4 +73,27 @@
     height: 30px
     border: 1px solid green
 
+  .input
+    height: 40px
+    font-size: 14px
+    line-height: 24px
+    font-weight: 400
+    border: none
+    &:focus
+      outline: none
+
+  .input_green
+    border-bottom: 1px solid rgb(132, 198, 4)
+
+  .input_white
+    border-bottom: 1px solid rgb(255, 255, 255)
+
+  .textarea
+    width: 100%
+    height: 150px
+
+  .textarea_green
+    border: 1px solid rgb(132, 198, 4)
+
+
 </style>

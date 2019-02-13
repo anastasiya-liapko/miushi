@@ -1,5 +1,12 @@
 <template>
-  <div>
+  <div class="cabinet">
+    <div class="container">
+
+      <div class="cabinet__info"></div>
+
+      <div class="cabinet__orders"></div>
+
+    </div>
   </div>
 </template>
 
