@@ -13,15 +13,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // npm install vuelidate
 import Vuelidate from 'vuelidate'
 
-// npm install vue-select
-import vSelect from 'vue-select'
+// npm install vue-dropdowns // (select)
 
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
-
-
-Vue.component('v-select', vSelect);
 
 
 export const eventBus = new Vue({

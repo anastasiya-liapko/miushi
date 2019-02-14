@@ -13,7 +13,7 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "hamburgers": "^1.1.3",
     "vue": "^2.5.11",
-    "vue-select": "^2.5.1",
+    "vue-dropdowns": "^1.0.6",
     "vuelidate": "^0.7.4"
   },
   "browserslist": [
