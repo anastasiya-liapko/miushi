@@ -15,9 +15,22 @@ import Vuelidate from 'vuelidate'
 
 // npm install vue-dropdowns // (select)
 
+// npm i pretty-checkbox-vue
+import 'pretty-checkbox/dist/pretty-checkbox.css';
+import 'pretty-checkbox-vue/dist/pretty-checkbox-vue.js';
+import PrettyCheckbox from 'pretty-checkbox-vue';
+
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
+Vue.use(PrettyCheckbox);
+
+
+Vue.directive('highlight', {
+  bind(el, binding, vnode) {
+    
+  }
+});
 
 
 export const eventBus = new Vue({

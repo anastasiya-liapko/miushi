@@ -15,7 +15,7 @@
     </p>
 
     <p class="contacts__call call order-2 order-lg-4">
-      <app-btn></app-btn>
+      <app-btn class="btn_green" @btnClick="value = $event">{{ 'Обратный звонок' }}</app-btn>
     </p>
 
   </div>
@@ -25,6 +25,11 @@
   import Btn from '../global/Btn.vue';
 
   export default {
+    data: function() {
+      return {
+        value: false
+      }
+    },
     components: {
       'app-btn': Btn
     }

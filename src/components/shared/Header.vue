@@ -1,7 +1,7 @@
 <template>
   <div class="header">
 
-    <div id="js-menu" class="header__desktop d-lg-flex flex-column" v-show="show">
+    <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column" v-show="show">
       <div class="header__top order-2 order-lg-1">
         <div class="container">
           <div class="row flex-nowrap justify-content-between">
@@ -68,7 +68,7 @@
     },
     methods: {
       hide: function(e) {
-        var menu = document.querySelector('#js-menu');
+        var menu = document.querySelector('#js-headerMenu');
         var burger = document.querySelector('#js-burger');
 
         if (!menu.contains(e.target) && !burger.contains(e.target)){
@@ -95,7 +95,6 @@
     height: 50px
     margin-top: 20px
     border-top: 1px solid rgb(242, 242, 242)
-    border-bottom: 1px solid rgb(242, 242, 242)
 
 
   @media(max-width: 991px)
@@ -114,7 +113,6 @@
       width: 380px
       height: auto
       background-color: rgb(255, 255, 255)
-      border: 1px solid red
       .container
         padding: 25px
       .logo,

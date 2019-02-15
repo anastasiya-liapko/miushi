@@ -63,20 +63,21 @@
     height: auto
 
   .row,
-  .col,
+  div[class^='col-'],
   p
     margin: 0
     padding: 0
 
   .title
     position: relative
-    padding: 0 110px
-    font-family: 'Shadows Into Light', cursive
-    font-size: 50px
-    line-height: normal
+    margin: 50px 0
+    padding: 0 140px
+    font-family: 'Marck Script', cursive
+    font-size: 40px
+    line-height: 1
     font-weight: 400
+    text-align: center
     color: rgb(50, 80, 90)
-    border: 1px solid red
     &::before,
     &::after
       content: ''
@@ -88,7 +89,6 @@
       background-repeat: no-repeat
       background-position: center
       background-size: cover
-      border: 1px solid green
     &::before
       left: 0
       background-image: url('./assets/img/title-left-pic.png')
@@ -102,16 +102,59 @@
     border: 1px solid green
 
   .input
+    width: 100%
     height: 40px
     padding-left: 15px
     font-size: 14px
     line-height: 24px
     font-weight: 400
+    color: rgb(0, 0, 0)
+    opacity: 1
     border: none
+    transition: all 0.2s ease
     &:focus
       outline: none
-    &::placeholder
-      color: rgb(0, 0, 0)
+    &::-ms-clear 
+      display: none
+    &::-ms-reveal
+      display: none
+  .input::-webkit-input-placeholder
+    color: rgb(0, 0, 0)
+    -webkit-transition: all 0.2s ease
+    -moz-transition: all 0.2s ease
+    -o-transition: all 0.2s ease
+    transition: all 0.2s ease
+    animation: all 0.2s ease
+  .input::-moz-placeholder
+    color: rgb(0, 0, 0)
+    opacity: 1
+    -webkit-transition: all 0.2s ease
+    -moz-transition: all 0.2s ease
+    -o-transition: all 0.2s ease
+    transition: all 0.2s ease
+    animation: all 0.2s ease
+  .input::-ms-input-placeholder
+    color: rgb(0, 0, 0)
+    -webkit-transition: all 0.2s ease
+    -moz-transition: all 0.2s ease
+    -o-transition: all 0.2s ease
+    transition: all 0.2s ease
+    animation: all 0.2s ease
+  .input::placeholder
+    color: rgb(0, 0, 0)
+    -webkit-transition: all 0.2s ease
+    -moz-transition: all 0.2s ease
+    -o-transition: all 0.2s ease
+    transition: all 0.2s ease
+    animation: all 0.2s ease
+  .input:focus::-webkit-input-placeholder
+    color: transparent
+  .input:focus::-moz-placeholder
+    color: transparent
+  .input:focus::-ms-input-placeholder
+    color: transparent
+  .input:focus::placeholder
+    color: transparent
 
   .input_green
     border-bottom: 1px solid rgb(132, 198, 4)
@@ -122,9 +165,50 @@
   .textarea
     width: 100%
     height: 150px
+    padding: 15px
+    transition: all 0.2s ease
+    &:focus
+      outline: none
+  .textarea::-webkit-input-placeholder
+    color: rgb(0, 0, 0)
+    transition: all 0.2s ease
+  .textarea::-moz-placeholder
+    color: rgb(0, 0, 0)
+    opacity: 1
+    transition: all 0.2s ease
+  .textarea:-ms-input-placeholder
+    color: rgb(0, 0, 0)
+    transition: all 0.2s ease
+  .textarea::placeholder
+    color: rgb(0, 0, 0)
+    transition: all 0.2s ease
+  .textarea:focus::-webkit-input-placeholder
+    color: transparent
+  .textarea:focus::-moz-placeholder
+    color: transparent
+  .textarea:focus::-ms-input-placeholder
+    color: transparent
+  .textarea:focus::placeholder
+    color: transparent
 
   .textarea_green
     border: 1px solid rgb(132, 198, 4)
+
+  
+  @media(max-width: 767px)
+    .title 
+      font-size: 30px
+      padding: 0 65px
+      &::before,
+      &::after  
+        width: 55px 
+        height: 20px
+        margin-top: -10px
+    .title_without-pics
+      padding: 0
+      &::before,
+      &::after
+        display: none
 
 
 </style>

@@ -10,7 +10,7 @@
         <span class="select__caret"></span>
       </li>
 
-      <ul class="select__menu" v-if="showMenu">
+      <ul id="js-selectMenu" class="select__menu" v-show="showMenu">
         <li v-for="option in options">
           <a href="javascript:void(0)" @click="updateOption(option)" :class="{isSelected: option.name === selectedOption.name}">
             {{ option.name }}
@@ -38,21 +38,35 @@
       selected: {},
       placeholder: [String]
     },
-    mounted() {
+    created: function() {
+      window.addEventListener('mouseup', this.hide);
+    },
+    mounted: function() {
       this.selectedOption = this.selected;
       if (this.placeholder)
       {
           this.placeholderText = this.placeholder;
       }
     },
+    beforeDestroy: function () {
+      window.removeEventListener('mouseup', this.hide);
+    },
     methods: {
-      updateOption(option) {
+      updateOption: function(option) {
           this.selectedOption = option;
           this.showMenu = false;
           this.$emit('updateOption', this.selectedOption);
       },
-      toggleMenu() {
+      toggleMenu: function() {
         this.showMenu = !this.showMenu;
+      },
+      hide: function(e) {
+        var selectMenu = document.querySelector('#js-selectMenu');
+        var toggleMenu = document.querySelector('.select__toggle');
+
+        if (!selectMenu.contains(e.target) && !toggleMenu.contains(e.target)){
+          this.showMenu = false;
+        }
       }
     }
   }
@@ -63,8 +77,8 @@
     position: relative
     display: inline-block
     min-width: 160px
+    width: 100%
     height: 40px
-    margin: 10px 1px
     vertical-align: middle
     transition: all 0.1s ease
     a:hover
@@ -150,7 +164,7 @@
     margin-left: 2px
     vertical-align: middle
     border-top: 4px dashed
-    border-top: 4px solid \9
+    border-top: 4px solid rgb(132, 198, 4)
     border-right: 4px solid transparent
     border-left: 4px solid transparent
     transform: rotate(0deg)
