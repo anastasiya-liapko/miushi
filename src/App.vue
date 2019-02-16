@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <div class="overlay" v-if="show"></div>
+
     <app-header></app-header>
 
     <keep-alive>
@@ -25,12 +27,19 @@
   export default {
     data: function() {
       return {
-        selectedPage: 'app-main'
+        selectedPage: 'app-main',
+        show: false
       }
     },
     created: function() {
       eventBus.$on('selectPage', (page) => {
         this.selectedPage = page;
+      });
+      eventBus.$on('burgerClick', (show) => {
+        this.show = show;
+      });
+      eventBus.$on('bodyClick', (show) => {
+        this.show = show;
       });
     },
     components: {
@@ -45,6 +54,7 @@
 
 <style lang="sass">
   #app 
+    position: relative
     font-family: 'Open Sans', sans-serif
     font-size: 0.875rem
     font-weight: 400
@@ -67,6 +77,15 @@
   p
     margin: 0
     padding: 0
+
+  .overlay
+    z-index: 20
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: rgba(0, 0, 0, 0.4)
 
   .title
     position: relative

@@ -104,7 +104,7 @@
       padding-bottom: 15px
 
     .header__desktop
-      z-index: 1
+      z-index: 30
       position: absolute
       top: 0
       left: 0

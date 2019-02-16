@@ -15,7 +15,7 @@
 
 <style lang="sass" scoped>
   .dropdown
-    z-index: 3
+    z-index: 10
     position: absolute
     display: none
     width: 100%

@@ -78,7 +78,7 @@
       background-color: rgb(174, 174, 174)
 
   .opened
-    z-index: 1
+    z-index: 40
     position: absolute
     top: 25px
     left: 335px

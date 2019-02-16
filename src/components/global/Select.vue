@@ -1,11 +1,11 @@
 <template>
     <div class="select" :class="{isOpened: showMenu}">
-      <li @click="toggleMenu()" class="select__toggle" v-if="selectedOption.name !== undefined">
+      <li @click="toggleMenu()" class="select__toggle" v-show="selectedOption.name !== undefined">
         {{ selectedOption.name }}
         <span class="select__caret"></span>
       </li>
 
-      <li @click="toggleMenu()" class="select__toggle" v-if="selectedOption.name === undefined">
+      <li @click="toggleMenu()" class="select__toggle" v-show="selectedOption.name === undefined">
         {{placeholderText}}
         <span class="select__caret"></span>
       </li>
@@ -118,7 +118,7 @@
     position: absolute
     top: 100%
     left: 0
-    z-index: 1000
+    z-index: 10
     float: left
     min-width: 160px
     width: 100%
