@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="overlay" v-if="show"></div>
+    <!-- <div class="overlay" v-if="show"></div> -->
 
     <app-header></app-header>
 
@@ -27,20 +27,17 @@
   export default {
     data: function() {
       return {
-        selectedPage: 'app-main',
-        show: false
+        selectedPage: 'app-main'
+        // show: false
       }
     },
     created: function() {
       eventBus.$on('selectPage', (page) => {
         this.selectedPage = page;
       });
-      eventBus.$on('burgerClick', (show) => {
-        this.show = show;
-      });
-      eventBus.$on('bodyClick', (show) => {
-        this.show = show;
-      });
+      // eventBus.$on('changeShow', (show) => {
+      //   this.show = show;
+      // });
     },
     components: {
       'app-header': Header,

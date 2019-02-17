@@ -1,13 +1,15 @@
 <template>
   <div class="hamburger-wrapper">
-    <button class="hamburger hamburger--elastic btn" type="button" 
-            @click="switchShow" 
-            :class="{isActive: isShow, opened: isShow}">
-    <!-- <button class="hamburger hamburger--elastic btn" type="button" @click="switchFn()" :class="{isActive: show}"> -->
-      <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-      </span>
-    </button>
+      
+      <button class="hamburger hamburger--elastic btn" type="button" 
+              @click="switchIsShow" 
+              :class="{isActive: isShow, opened: isShow}">
+      <!-- <button class="hamburger hamburger--elastic btn" type="button" @click="switchFn()" :class="{isActive: show}"> -->
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
   </div>
 </template>
 
@@ -25,12 +27,12 @@
       }
     },
     created: function() {
-      eventBus.$on('bodyClick', (show) => {
+      eventBus.$on('changeShow', (show) => {
         this.isShow = show;
       });
     },
     methods: {
-      switchShow: function() {
+      switchIsShow: function() {
         this.isShow = !this.isShow;
         // this.$emit('burgerClick', this.show);
         // eventBus.$emit('burgerClick', this.show);
@@ -48,7 +50,7 @@
     height: 18px
     padding: 0
 
-  .hamburger 
+  .hamburger
     &:hover
       cursor: pointer
     &:active

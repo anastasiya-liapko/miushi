@@ -1,5 +1,5 @@
 <template>
-  <div class="cart" v-cloak>
+  <div class="cart">
     <div class="container">
       <form id="js-cart" class="cart__form">
         
@@ -10,7 +10,7 @@
         
 
         <div class="cart__delivery row flex-column pb-5">
-          <h2 class="title title_without-pics">Получатель и адрес доставки</h2>
+          <h2 class="title title_without-pics" v-highlight:color.delayed="'red'">Получатель и адрес доставки</h2>
 
           <div class="row flex-column flex-md-row justify-content-between w-100">
             <div div class="row flex-column justify-content-start col-md-6 pr-md-4">
@@ -190,9 +190,6 @@
 </script>
 
 <style lang="sass">
-  [v-cloak] 
-    display: none
-
   .cart
     border-top: 1px solid rgb(242, 242, 242)
 

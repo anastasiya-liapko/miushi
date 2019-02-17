@@ -1,30 +1,54 @@
 <template>
   <div class="header">
 
-    <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column" v-show="show">
-      <div class="header__top order-2 order-lg-1">
-        <div class="container">
-          <div class="row flex-nowrap justify-content-between">
-            <app-header-logo></app-header-logo>
-            <app-header-contacts></app-header-contacts>
+    <!-- <transition name="slide" appear>
+      <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column" v-show="show">
+        <div class="header__top order-2 order-lg-1">
+          <div class="container">
+            <div class="row flex-nowrap justify-content-between">
+              <app-header-logo></app-header-logo>
+              <app-header-contacts></app-header-contacts>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="header__bottom order-1 order-lg-2">
-        <div class="container">
-          <div class="row flex-nowrap">
-            <app-header-nav></app-header-nav>
-            <app-header-user></app-header-user>
+        <div class="header__bottom order-1 order-lg-2">
+          <div class="container">
+            <div class="row flex-nowrap">
+              <app-header-nav></app-header-nav>
+              <app-header-user></app-header-user>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </transition> -->
+    <transition enter-active-class="animated slideInDown"
+                leave-active-class="animated slideOutUp">
+      <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column" v-show="show">
+        <div class="header__top order-2 order-lg-1">
+          <div class="container">
+            <div class="row flex-nowrap justify-content-between">
+              <app-header-logo></app-header-logo>
+              <app-header-contacts></app-header-contacts>
+            </div>
+          </div>
+        </div>
+
+        <div class="header__bottom order-1 order-lg-2">
+          <div class="container">
+            <div class="row flex-nowrap">
+              <app-header-nav></app-header-nav>
+              <app-header-user></app-header-user>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
 
     <div class="header__mobile d-lg-none">
       <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <app-header-burger id="js-burger" :show="show" @burgerClick="show = $event"></app-header-burger>
+          <app-header-burger id="js-burger" :show="show" @changeShow="show = $event"></app-header-burger>
           <!-- <app-header-burger :switchFn="switchShow"></app-header-burger> -->
           <app-header-logo></app-header-logo>
           <app-header-user></app-header-user>
@@ -43,6 +67,7 @@
   import HeaderBurger from '../global/Burger.vue';
 
   import { eventBus } from '../../main.js';
+  import { hideMixin } from '../../hideMixin.js';
 
 
   export default {
@@ -57,14 +82,9 @@
     //   }
     // },
     created: function() {
-      eventBus.$on('burgerClick', (show) => {
+      eventBus.$on('changeShow', (show) => {
         this.show = show;
       });
-
-      window.addEventListener('mouseup', this.hide);
-    },
-    beforeDestroy: function () {
-      window.removeEventListener('mouseup', this.hide);
     },
     methods: {
       hide: function(e) {
@@ -73,10 +93,11 @@
 
         if (!menu.contains(e.target) && !burger.contains(e.target)){
           this.show = false;
-          eventBus.bodyClick(this.show);
+          eventBus.switchShow(this.show);
         }
       }
     },
+    mixins: [hideMixin],
     components: {
       'app-header-logo': HeaderLogo,
       'app-header-contacts': HeaderContacts,
@@ -96,6 +117,43 @@
     margin-top: 20px
     border-top: 1px solid rgb(242, 242, 242)
 
+  // animation
+  .fade-enter
+    opacity: 0
+
+  .fade-enter-active
+    transition: opacity 1s
+
+  .fade-leave
+    // opacity: 1
+
+  .fade-leave-active
+    transition: opacity 1s
+    opacity: 0
+
+  .slide-enter
+    // transform: translateX(20px)
+
+  .slide-enter-active
+    animation: slide-in 0.5s ease-out forwards
+
+  .slide-leave
+
+  .slide-leave-active
+    animation: slide-out 0.5s ease-out forwards
+
+  @keyframes slide-in
+    from
+      transform: translateX(-100%)
+    to
+      transform: translateX(0)
+
+  @keyframes slide-out
+    from
+      transform: translateX(0)
+    to
+      transform: translateX(-100%)
+
 
   @media(max-width: 991px)
     .header
@@ -113,6 +171,7 @@
       width: 380px
       height: auto
       background-color: rgb(255, 255, 255)
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2)
       .container
         padding: 25px
       .logo,

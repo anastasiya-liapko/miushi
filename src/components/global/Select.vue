@@ -21,6 +21,9 @@
 </template>
 
 <script>
+  import { hideMixin } from '../../hideMixin.js';
+
+
   export default {
     data() {
       return {
@@ -38,18 +41,11 @@
       selected: {},
       placeholder: [String]
     },
-    created: function() {
-      window.addEventListener('mouseup', this.hide);
-    },
     mounted: function() {
       this.selectedOption = this.selected;
-      if (this.placeholder)
-      {
-          this.placeholderText = this.placeholder;
+      if (this.placeholder) {
+        this.placeholderText = this.placeholder;
       }
-    },
-    beforeDestroy: function () {
-      window.removeEventListener('mouseup', this.hide);
     },
     methods: {
       updateOption: function(option) {
@@ -68,7 +64,8 @@
           this.showMenu = false;
         }
       }
-    }
+    },
+    mixins: [hideMixin]
   }
 </script>
 

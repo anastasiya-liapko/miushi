@@ -20,6 +20,9 @@ import 'pretty-checkbox/dist/pretty-checkbox.css';
 import 'pretty-checkbox-vue/dist/pretty-checkbox-vue.js';
 import PrettyCheckbox from 'pretty-checkbox-vue';
 
+// npm install animate.css
+import 'animate.css/animate.min.css'
+
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
@@ -28,7 +31,19 @@ Vue.use(PrettyCheckbox);
 
 Vue.directive('highlight', {
   bind(el, binding, vnode) {
-    
+    // el.style.backgroundColor = 'green';
+    // el.style.backgroundColor = binding.value;
+    var delay = 0;
+    if (binding.modifiers['delayed']) {
+      delay = 3000;
+    }
+    setTimeout(() => {
+      if (binding.arg === 'background') {
+        el.style.backgroundColor = binding.value;
+      } else {
+        el.style.color = binding.value;
+      }
+    }, delay);
   }
 });
 
@@ -38,13 +53,10 @@ export const eventBus = new Vue({
     // data is an object, not a function
   },
   methods: {
-    bodyClick: function(show) {
-      this.$emit('bodyClick', show);
+    switchShow(show) {
+      this.$emit('changeShow', show);
     },
-    switchShow: function(show) {
-      this.$emit('burgerClick', show);
-    },
-    switchPage: function(selectedPage) {
+    switchPage(selectedPage) {
       this.$emit('selectPage', selectedPage);
     }
   }
