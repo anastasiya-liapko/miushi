@@ -10,13 +10,15 @@
         <span class="select__caret"></span>
       </li>
 
-      <ul id="js-selectMenu" class="select__menu" v-show="showMenu">
-        <li v-for="option in options">
-          <a href="javascript:void(0)" @click="updateOption(option)" :class="{isSelected: option.name === selectedOption.name}">
-            {{ option.name }}
-          </a>
-        </li>
-      </ul>
+      <transition name="slide" appear>
+        <ul id="js-selectMenu" class="select__menu" v-show="showMenu">
+          <li v-for="option in options">
+            <a href="javascript:void(0)" @click="updateOption(option)" :class="{isSelected: option.name === selectedOption.name}">
+              {{ option.name }}
+            </a>
+          </li>
+        </ul>
+      </transition>
     </div>
 </template>
 
@@ -32,6 +34,7 @@
           },
           showMenu: false,
           placeholderText: 'Please select an item',
+          selectMenuHeight: 0
       }
     },
     props: {
@@ -41,6 +44,18 @@
       selected: {},
       placeholder: [String]
     },
+    // beforeCreate: function() {
+      // var menu = document.querySelector('#js-selectMenu');
+      // var item = document.querySelector('.select__toggle');
+      // var itemHeight = parseInt(getComputedStyle(item).height.split('px').shift());
+      // var marginTop = parseInt(getComputedStyle(menu).marginTop.split('px').shift());
+      // var borderTop = parseInt(getComputedStyle(menu).borderTopWidth.split('px').shift());
+      // var marginBottom = parseInt(getComputedStyle(menu).marginBottom.split('px').shift());
+      // var borderBottom = parseInt(getComputedStyle(menu).borderBottomWidth.split('px').shift());
+      // this.selectMenuHeight = (this.options.length * itemHeight + marginTop + marginBottom + borderTop + borderBottom) + 'px';
+      // menu.style.height = this.selectMenuHeight;
+      // console.log(getComputedStyle(document.querySelector('#js-selectMenu')).height);
+    // },
     mounted: function() {
       this.selectedOption = this.selected;
       if (this.placeholder) {
@@ -59,7 +74,6 @@
       hide: function(e) {
         var selectMenu = document.querySelector('#js-selectMenu');
         var toggleMenu = document.querySelector('.select__toggle');
-
         if (!selectMenu.contains(e.target) && !toggleMenu.contains(e.target)){
           this.showMenu = false;
         }
@@ -88,6 +102,8 @@
       transform: rotate(540deg)
 
   .select__toggle 
+    position: relative
+    z-index: 20
     float: none
     min-width: 160px
     height: 40px
@@ -113,13 +129,14 @@
   
   .select__menu 
     position: absolute
-    top: 100%
+    // top: 100%
+    top: 40px
     left: 0
     z-index: 10
     float: left
     min-width: 160px
     width: 100%
-    height: auto
+    height: 94px
     margin: 2px 0 0
     padding: 5px 0
     list-style: none
@@ -132,6 +149,8 @@
     border-radius: 4px
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
     background-clip: padding-box
+    overflow: hidden
+    transition: all 0.5s ease
     & > li > a 
       clear: both
       display: block
@@ -165,9 +184,29 @@
     border-right: 4px solid transparent
     border-left: 4px solid transparent
     transform: rotate(0deg)
-    transition: all 0.2s ease
+    transition: all 0.3s ease
   
   li 
     list-style: none
+
+
+  // animation
+  .slide-enter
+    height: 0px
+    margin: 0
+    padding: 0
+    border-top-width: 0px
+    border-bottom-width: 0px
+
+  .slide-enter-active
+
+  .slide-leave
+
+  .slide-leave-active
+    height: 0px
+    margin: 0
+    padding: 0
+    border-top-width: 0px
+    border-bottom-width: 0px
   
 </style>

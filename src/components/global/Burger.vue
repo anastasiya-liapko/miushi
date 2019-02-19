@@ -1,6 +1,6 @@
 <template>
   <div class="hamburger-wrapper">
-      
+  
       <button class="hamburger hamburger--elastic btn" type="button" 
               @click="switchIsShow" 
               :class="{isActive: isShow, opened: isShow}">

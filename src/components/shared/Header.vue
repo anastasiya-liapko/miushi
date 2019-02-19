@@ -1,29 +1,7 @@
 <template>
   <div class="header">
 
-    <!-- <transition name="slide" appear>
-      <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column" v-show="show">
-        <div class="header__top order-2 order-lg-1">
-          <div class="container">
-            <div class="row flex-nowrap justify-content-between">
-              <app-header-logo></app-header-logo>
-              <app-header-contacts></app-header-contacts>
-            </div>
-          </div>
-        </div>
-
-        <div class="header__bottom order-1 order-lg-2">
-          <div class="container">
-            <div class="row flex-nowrap">
-              <app-header-nav></app-header-nav>
-              <app-header-user></app-header-user>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition> -->
-    <transition enter-active-class="animated slideInDown"
-                leave-active-class="animated slideOutUp">
+    <transition name="slide" appear>
       <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column" v-show="show">
         <div class="header__top order-2 order-lg-1">
           <div class="container">
@@ -44,6 +22,28 @@
         </div>
       </div>
     </transition>
+    <!-- <transition enter-active-class="animated slideInDown"
+                leave-active-class="animated slideOutUp">
+      <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column animated" v-show="show">
+        <div class="header__top order-2 order-lg-1">
+          <div class="container">
+            <div class="row flex-nowrap justify-content-between">
+              <app-header-logo></app-header-logo>
+              <app-header-contacts></app-header-contacts>
+            </div>
+          </div>
+        </div>
+
+        <div class="header__bottom order-1 order-lg-2">
+          <div class="container">
+            <div class="row flex-nowrap">
+              <app-header-nav></app-header-nav>
+              <app-header-user></app-header-user>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition> -->
 
     <div class="header__mobile d-lg-none">
       <div class="container">
@@ -144,15 +144,15 @@
 
   @keyframes slide-in
     from
-      transform: translateX(-100%)
+      transform: translateY(-100%)
     to
-      transform: translateX(0)
+      transform: translateY(0)
 
   @keyframes slide-out
     from
-      transform: translateX(0)
+      transform: translateY(0)
     to
-      transform: translateX(-100%)
+      transform: translateY(-100%)
 
 
   @media(max-width: 991px)
