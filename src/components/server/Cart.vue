@@ -6,7 +6,7 @@
 
         <div class="cart__items row flex-column align-items-center">
           <h2 class="title">Ваш заказ</h2>
-        </div><!-- cart__items -->
+        </div>
         
 
         <div class="cart__delivery row flex-column pb-5">
@@ -120,7 +120,7 @@
               <app-btn class="btn_red" @btnClick="isSubmitted = true">{{ 'Оформить заказ' }}</app-btn>
             </div>
           </div>
-        </div><!-- cart__delivery -->
+        </div>
 
 
         <div v-if="isSubmitted">
@@ -191,6 +191,8 @@
 
 <style lang="sass">
   .cart
+    width: 100%
+    background-color: rgb(255, 255, 255)
     border-top: 1px solid rgb(242, 242, 242)
 
   .container

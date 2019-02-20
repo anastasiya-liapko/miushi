@@ -33,8 +33,7 @@
             name: '',
           },
           showMenu: false,
-          placeholderText: 'Please select an item',
-          selectMenuHeight: 0
+          placeholderText: 'Please select an item'
       }
     },
     props: {
@@ -44,18 +43,6 @@
       selected: {},
       placeholder: [String]
     },
-    // beforeCreate: function() {
-      // var menu = document.querySelector('#js-selectMenu');
-      // var item = document.querySelector('.select__toggle');
-      // var itemHeight = parseInt(getComputedStyle(item).height.split('px').shift());
-      // var marginTop = parseInt(getComputedStyle(menu).marginTop.split('px').shift());
-      // var borderTop = parseInt(getComputedStyle(menu).borderTopWidth.split('px').shift());
-      // var marginBottom = parseInt(getComputedStyle(menu).marginBottom.split('px').shift());
-      // var borderBottom = parseInt(getComputedStyle(menu).borderBottomWidth.split('px').shift());
-      // this.selectMenuHeight = (this.options.length * itemHeight + marginTop + marginBottom + borderTop + borderBottom) + 'px';
-      // menu.style.height = this.selectMenuHeight;
-      // console.log(getComputedStyle(document.querySelector('#js-selectMenu')).height);
-    // },
     mounted: function() {
       this.selectedOption = this.selected;
       if (this.placeholder) {
@@ -136,7 +123,8 @@
     float: left
     min-width: 160px
     width: 100%
-    height: 94px
+    height: auto
+    // height: 94px
     margin: 2px 0 0
     padding: 5px 0
     list-style: none
@@ -150,7 +138,6 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
     background-clip: padding-box
     overflow: hidden
-    transition: all 0.5s ease
     & > li > a 
       clear: both
       display: block
@@ -192,21 +179,35 @@
 
   // animation
   .slide-enter
-    height: 0px
-    margin: 0
-    padding: 0
-    border-top-width: 0px
-    border-bottom-width: 0px
+    // transform: translateX(20px)
 
   .slide-enter-active
+    animation: slide-in 0.2s ease-out forwards
 
   .slide-leave
 
   .slide-leave-active
-    height: 0px
-    margin: 0
-    padding: 0
-    border-top-width: 0px
-    border-bottom-width: 0px
+    animation: slide-out 0.2s ease-out forwards
+    // position: absolute
+
+  // .slide-move
+  //   transition: transform 5s
+
+  @keyframes slide-in
+    from
+      opacity: 0
+      transform: translateY(-4px)
+    to
+      opacity: 1
+      transform: translateY(0)
+
+  @keyframes slide-out
+    from
+      opacity: 1
+      transform: translateY(0)
+    to
+      opacity: 0
+      transform: translateY(-4px)
+    
   
 </style>

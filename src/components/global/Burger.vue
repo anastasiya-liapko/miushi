@@ -2,8 +2,7 @@
   <div class="hamburger-wrapper">
   
       <button class="hamburger hamburger--elastic btn" type="button" 
-              @click="switchIsShow" 
-              :class="{isActive: isShow, opened: isShow}">
+              @click="switchIsShow">
       <!-- <button class="hamburger hamburger--elastic btn" type="button" @click="switchFn()" :class="{isActive: show}"> -->
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
@@ -37,6 +36,10 @@
         // this.$emit('burgerClick', this.show);
         // eventBus.$emit('burgerClick', this.show);
         eventBus.switchShow(this.isShow);
+
+        setTimeout(function() {
+          document.querySelector('.hamburger').classList.add('isActive');
+        }, 200);
       }
     }
   }
@@ -79,25 +82,29 @@
       transform: translate3d(0, -14px, 0) rotate(-270deg)
       background-color: rgb(174, 174, 174)
 
-  .opened
-    z-index: 40
-    position: absolute
-    top: 25px
-    left: 335px
+  #js-burgerOpened
+    display: none
+    .hamburger
+      position: absolute
+      top: 25px
+      right: 25px
 
 
   @media(max-width: 991px)
     .hamburger-wrapper
       margin-right: 55px
+
+    #js-burgerOpened
+      display: block
     
 
   @media(max-width: 575px)
     .hamburger-wrapper
       margin-right: 45px
 
-    .opened
-      left: auto
-      right: 25px
+    #js-burgerOpened
+      .hamburger
+        width: auto
 
 
 </style>

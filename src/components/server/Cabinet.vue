@@ -17,7 +17,7 @@
 </script>
 
 <style lang="sass" scoped>
-  div
+  .cabinet
     width: 100%
     height: 200px
     background-color: green

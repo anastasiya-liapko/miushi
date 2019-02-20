@@ -17,7 +17,6 @@
   .dropdown
     z-index: 10
     position: absolute
-    display: none
     width: 100%
     background-color: rgb(255, 255, 255)
     list-style: none

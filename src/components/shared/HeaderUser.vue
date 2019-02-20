@@ -1,9 +1,9 @@
 <template>
   <div class="user row flex-nowrap flex-lg-grow-1">
-    <p class="user__cabinet cabinet row col-lg-6 justify-content-center align-items-center">
+    <p class="user__cabinet row col-lg-6 justify-content-center align-items-center">
       <span @click="switchPage('app-cabinet')">Кабинет</span>
     </p>
-    <p class="user__cart cart row col-lg-6 justify-content-center align-items-center">
+    <p class="user__cart row col-lg-6 justify-content-center align-items-center">
       <span @click="switchPage('app-cart')">Корзина</span>
     </p>
   </div>
@@ -23,8 +23,8 @@
 </script>
 
 <style lang="sass" scoped>
-  .cabinet,
-  .cart
+  .user__cabinet,
+  .user__cart
     span
       position: relative
       padding-left: 40px
@@ -39,14 +39,14 @@
     span:hover
       cursor: pointer
 
-  .cabinet
+  .user__cabinet
     span::before
       width: 22px
       height: 22px
       margin-top: -11px
       background-image: url(../../assets/img/user.png)
 
-  .cart
+  .user__cart
     span::before
       width: 23px
       height: 21px

@@ -1,7 +1,7 @@
 <template>
   <div class="header">
 
-    <transition name="slide" appear>
+<!--     <transition name="slide" appear>
       <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column" v-show="show">
         <div class="header__top order-2 order-lg-1">
           <div class="container">
@@ -21,10 +21,11 @@
           </div>
         </div>
       </div>
-    </transition>
-    <!-- <transition enter-active-class="animated slideInDown"
-                leave-active-class="animated slideOutUp">
+    </transition> -->
+    <transition enter-active-class="animated bounceInLeft"
+                leave-active-class="animated bounceOutLeft">
       <div id="js-headerMenu" class="header__desktop d-lg-flex flex-column animated" v-show="show">
+        <app-header-burger id="js-burgerOpened" :show="show" @changeShow="show = $event"></app-header-burger>
         <div class="header__top order-2 order-lg-1">
           <div class="container">
             <div class="row flex-nowrap justify-content-between">
@@ -43,12 +44,12 @@
           </div>
         </div>
       </div>
-    </transition> -->
+    </transition>
 
     <div class="header__mobile d-lg-none">
       <div class="container">
         <div class="row flex-nowrap justify-content-between align-items-center">
-          <app-header-burger id="js-burger" :show="show" @changeShow="show = $event"></app-header-burger>
+          <app-header-burger :show="show" @changeShow="show = $event"></app-header-burger>
           <!-- <app-header-burger :switchFn="switchShow"></app-header-burger> -->
           <app-header-logo></app-header-logo>
           <app-header-user></app-header-user>
@@ -89,7 +90,7 @@
     methods: {
       hide: function(e) {
         var menu = document.querySelector('#js-headerMenu');
-        var burger = document.querySelector('#js-burger');
+        var burger = document.querySelector('#js-burgerOpened');
 
         if (!menu.contains(e.target) && !burger.contains(e.target)){
           this.show = false;
@@ -110,7 +111,9 @@
 
 <style lang="sass" scoped>
   .header
+    z-index: 30
     padding-top: 10px    
+    background-color: rgb(255, 255, 255)
 
   .header__bottom
     height: 50px

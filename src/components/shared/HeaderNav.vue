@@ -1,17 +1,22 @@
 <template>
   <ul class="nav row flex-column flex-lg-row col-12 col-lg-8">
-    <!-- <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems" @click="dropdown"> -->
-    <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems">
+    <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems" @click="dropdown(i)">
+    <!-- <li class="nav__item flex-grow-1" v-for="(navItem, i) in navItems"> -->
       <a href="#">
-        <span :class="{icon_down: navItem.length > 0}">{{ navItem[0] }}</span>
+        <span :class="{icon_down: navItem[1]}">{{ navItem[0] }}</span>
       </a>
-      <app-header-nav-dropdown :dropdownItems="navItem[1]"></app-header-nav-dropdown>
+      <transition enter-active-class="animated bounceInDown"
+                  leave-active-class="animated bounceOutUp">
+        <app-header-nav-dropdown :dropdownItems="navItem[1]" v-show="navItems[i].isShown"></app-header-nav-dropdown>
+      </transition>
     </li>
   </ul>
 </template>
 
 <script>
   import HeaderNavDropdown from './HeaderNavDropdown.vue';
+
+  import { hideMixin } from '../../hideMixin.js';
 
 
   export default {
@@ -20,42 +25,47 @@
         navItems: [
           {
             0: 'меню',
-            1: ['сеты', 'роллы', 'вок', 'пицца']
+            1: ['сеты', 'роллы', 'вок', 'пицца'],
+            'isShown':  false
           },
           {
-            0: 'акции и скидки'
+            0: 'акции и скидки',
+            'isShown':  false
           },
           {
             0: 'доставка и оплата',
-            1: ['сеты', 'роллы', 'вок', 'пицца']
+            1: ['сеты', 'роллы', 'вок', 'пицца'],
+            'isShown':  false
           },
           {
-            0: 'новости'
+            0: 'новости',
+            'isShown':  false
           },
           {
-            0: 'контакты'
+            0: 'контакты',
+            'isShown':  false
           }
         ]
       }
     },
     methods: {
-      // dropdown: function(e) {
-      //   var element = e.target;
-  
-      //   while (!element.classList.contains('nav__item')) {
-      //     element = element.parentNode;
-      //   }
+      dropdown: function(i) {
+        this.navItems[i].isShown = !this.navItems[i].isShown;
+      },
+      hide: function(e) {
+        var openedNavItem = document.querySelectorAll('.nav__item');
+        var openedDropdown = document.querySelectorAll('.dropdown');
 
-      //   var dropdowns = document.querySelectorAll('.dropdown');
-        
-      //   for (var i = 0; i < dropdowns.length; i++) {
-      //     dropdowns[i].classList.add('d-none');
-      //   }
-
-      //   element.querySelector('.dropdown').classList.remove('d-none');
-        
-      // }
+        for (var i = 0; i < openedDropdown.length; i++) {
+          if (this.navItems[i].isShown === true
+             && !openedDropdown[i].contains(e.target)
+             && !openedNavItem[i].contains(e.target)) {
+            this.navItems[i].isShown = false;
+          }
+        };
+      }
     },
+    mixins: [hideMixin],
     components: {
       'app-header-nav-dropdown': HeaderNavDropdown
     }
@@ -67,8 +77,6 @@
   .nav__item
     position: relative
     list-style: none
-    &:hover>.dropdown
-      display: block
     a
       display: inline-block
       width: 100%

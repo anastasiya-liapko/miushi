@@ -4,10 +4,13 @@
 
     <app-header></app-header>
 
-    <keep-alive>
+    <!-- <transition-group name="slide"> -->
+    <!-- <keep-alive> -->
+      <!-- <component :is="selectedPage" :key="selectedPage"> -->
       <component :is="selectedPage">
       </component>
-    </keep-alive>
+    <!-- </keep-alive> -->
+    <!-- </transition-group> -->
 
     <app-footer></app-footer>
   </div>
@@ -209,6 +212,35 @@
 
   .textarea_green
     border: 1px solid rgb(132, 198, 4)
+
+
+  // animation
+  // .slide-enter
+  // transform: translateX(20px)
+
+  // .slide-enter-active
+  //   animation: slide-in 5s ease-out forwards
+
+  // .slide-leave
+
+  // .slide-leave-active
+  //   animation: slide-out 5s ease-out forwards
+  //   position: absolute
+
+  // .slide-move
+  //   transition: transform 5s
+
+  // @keyframes slide-in
+  //   from
+  //     transform: translateY(-100%)
+  //   to
+  //     transform: translateY(0)
+
+  // @keyframes slide-out
+  //   from
+  //     transform: translateY(0)
+  //   to
+  //     transform: translateY(-100%)
 
   
   @media(max-width: 767px)
