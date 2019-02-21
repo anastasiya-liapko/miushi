@@ -54,6 +54,7 @@
     padding: 0
 
   .hamburger
+    z-index: 20
     &:hover
       cursor: pointer
     &:active

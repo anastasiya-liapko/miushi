@@ -10,7 +10,8 @@
         
 
         <div class="cart__delivery row flex-column pb-5">
-          <h2 class="title title_without-pics" v-highlight:color.delayed="'red'">Получатель и адрес доставки</h2>
+          <!-- <h2 class="title title_without-pics" v-highlight:color.delayed="'red'">Получатель и адрес доставки</h2> -->
+          <h2 class="title title_without-pics">Получатель и адрес доставки</h2>
 
           <div class="row flex-column flex-md-row justify-content-between w-100">
             <div div class="row flex-column justify-content-start col-md-6 pr-md-4">
@@ -117,7 +118,7 @@
                       @click.prevent="submitted">
                       Оформить заказ
               </button> -->
-              <app-btn class="btn_red" @btnClick="isSubmitted = true">{{ 'Оформить заказ' }}</app-btn>
+              <app-btn class="btn_border btn_red" @btnClick="isSubmitted = true">{{ 'Оформить заказ' }}</app-btn>
             </div>
           </div>
         </div>
@@ -198,9 +199,6 @@
   .container
     width: 100%
     height: auto
-
-  .cart__delivery
-    border: 1px solid green
 
   .cart
     .input,

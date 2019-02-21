@@ -116,7 +116,6 @@
   
   .select__menu 
     position: absolute
-    // top: 100%
     top: 40px
     left: 0
     z-index: 10
@@ -175,39 +174,5 @@
   
   li 
     list-style: none
-
-
-  // animation
-  .slide-enter
-    // transform: translateX(20px)
-
-  .slide-enter-active
-    animation: slide-in 0.2s ease-out forwards
-
-  .slide-leave
-
-  .slide-leave-active
-    animation: slide-out 0.2s ease-out forwards
-    // position: absolute
-
-  // .slide-move
-  //   transition: transform 5s
-
-  @keyframes slide-in
-    from
-      opacity: 0
-      transform: translateY(-4px)
-    to
-      opacity: 1
-      transform: translateY(0)
-
-  @keyframes slide-out
-    from
-      opacity: 1
-      transform: translateY(0)
-    to
-      opacity: 0
-      transform: translateY(-4px)
-    
   
 </style>

@@ -15,7 +15,7 @@
     </p>
 
     <p class="contacts__call call order-2 order-lg-4">
-      <app-btn class="btn_green" @btnClick="value = $event">{{ 'Обратный звонок' }}</app-btn>
+      <app-btn class="btn_border btn_green" @btnClick="value = $event">{{ 'Обратный звонок' }}</app-btn>
     </p>
 
   </div>
@@ -29,6 +29,9 @@
       return {
         value: false
       }
+    },
+    methods: {
+
     },
     components: {
       'app-btn': Btn

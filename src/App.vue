@@ -4,7 +4,7 @@
 
     <app-header></app-header>
 
-    <!-- <transition-group name="slide"> -->
+    <!-- <transition-group name="slide-page" mode="in-out"> -->
     <!-- <keep-alive> -->
       <!-- <component :is="selectedPage" :key="selectedPage"> -->
       <component :is="selectedPage">
@@ -214,33 +214,160 @@
     border: 1px solid rgb(132, 198, 4)
 
 
-  // animation
-  // .slide-enter
-  // transform: translateX(20px)
+  // slide down/up
+  .slide-enter
 
-  // .slide-enter-active
-  //   animation: slide-in 5s ease-out forwards
+  .slide-enter-active
+    transform-origin: top
+    animation: slide-in 0.2s linear forwards
 
-  // .slide-leave
+  .slide-leave
+    
+  .slide-leave-active
+    // position: absolute
+    transform-origin: top
+    animation: slide-out 0.2s linear forwards
 
-  // .slide-leave-active
-  //   animation: slide-out 5s ease-out forwards
-  //   position: absolute
+  .slide-move
+    transition: transform 5s linear
 
-  // .slide-move
-  //   transition: transform 5s
+  @keyframes slide-in
+    from
+      transform: rotateX(-90deg)
+    to
+      transform: rotateX(0deg)
 
-  // @keyframes slide-in
-  //   from
-  //     transform: translateY(-100%)
-  //   to
-  //     transform: translateY(0)
+  @keyframes slide-out
+    from
+      transform: rotateX(0deg)
+    to
+      transform: rotateX(-90deg)
 
-  // @keyframes slide-out
-  //   from
-  //     transform: translateY(0)
-  //   to
-  //     transform: translateY(-100%)
+
+  // slide down/up for components with same height
+  .slide-page-enter
+
+  .slide-page-enter-active
+    transform-origin: top
+    animation: slide-page-in 0.2s linear forwards
+
+  .slide-page-leave
+    
+  .slide-page-leave-active
+    position: absolute
+    transform-origin: bottom
+    animation: slide-page-out 0.2s linear forwards
+
+  @keyframes slide-page-in
+    from
+      transform: rotateX(-90deg)
+    to
+      transform: rotateX(0deg)
+
+  @keyframes slide-page-out
+    from
+      transform: rotateX(0deg)
+    to
+      transform: rotateX(-90deg)
+
+
+  // slide left/right
+  .slide-left-enter
+
+  .slide-left-enter-active
+    transform-origin: right
+    animation: slide-left-in 0.2s linear forwards
+
+  .slide-left-leave
+    
+  .slide-left-leave-active
+    transform-origin: right
+    animation: slide-left-out 0.2s linear forwards
+
+  @keyframes slide-left-in
+    from
+      transform: rotateY(-90deg)
+    to
+      transform: rotateY(0deg)
+
+  @keyframes slide-left-out
+    from
+      transform: rotateY(0deg)
+    to
+      transform: rotateY(-90deg)
+
+
+  // slide height
+  .max-height-enter
+
+  .max-height-enter-active
+    animation: max-height-in 0.6s ease-in-out
+
+  .max-height-leave
+    
+  .max-height-leave-active
+    animation: max-height-out 0.5s ease-in-out
+
+  @keyframes max-height-in
+    from
+      max-height: 0
+    to
+      max-height: 500px
+
+  @keyframes max-height-out
+    from
+      max-height: 500px
+    to
+      max-height: 0
+
+  // hover for round button
+  // .btn_green
+  //   border-radius: 50%
+  //   position: relative
+  //   width: 50px
+  //   height: 50px
+  //   font-size: 0.8125rem
+  //   color: rgb(31, 186, 10)
+  //   background-color: rgb(255, 255, 255)
+  //   box-shadow: 0 0 0 4px rgba(31, 186, 10, 1)
+  //   &::after
+  //     content: ''
+  //     position: absolute
+  //     top: -5px
+  //     left: -5px
+  //     right: -5px
+  //     bottom: -5px
+  //     border: 4px dashed rgba(31, 186, 10, 1)
+  //     border-radius: 50%
+  //     pointer-events: none
+  //   &:hover
+  //     box-shadow: 0 0 0 4px rgba(31, 186, 10, 0)
+  //     color: rgba(31, 186, 10, 1)
+  //     -webkit-transition: box-shadow 0.2s
+  //     -moz-transition: box-shadow 0.2s
+  //     transition: box-shadow 0.2s
+  //   &:hover::after
+  //     -webkit-animation: spinAround 9s linear infinite
+  //     -moz-animation: spinAround 9s linear infinite
+  //     animation: spinAround 9s linear infinite
+
+  // @-webkit-keyframes spinAround 
+  //     from 
+  //         -webkit-transform: rotate(0deg)
+  //     to 
+  //         -webkit-transform: rotate(360deg)
+
+  // @-moz-keyframes spinAround 
+  //     from 
+  //         -moz-transform: rotate(0deg)
+  //     to 
+  //         -moz-transform: rotate(360deg)
+    
+  // @keyframes spinAround 
+  //     from 
+  //         transform: rotate(0deg)
+  //     to 
+  //         transform: rotate(360deg)
 
   
   @media(max-width: 767px)
