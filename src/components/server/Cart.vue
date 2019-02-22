@@ -118,13 +118,20 @@
                       @click.prevent="submitted">
                       Оформить заказ
               </button> -->
-              <app-btn class="btn_border btn_red" @btnClick="isSubmitted = true">{{ 'Оформить заказ' }}</app-btn>
+              <app-btn class="btn_border btn_red" @btnClick="submit">{{ 'Оформить заказ' }}</app-btn>
             </div>
+          </div>
+
+          <div class="row justify-content-center col-md-12 mt-3">
+            <app-btn class="btn_border btn_red" @btnClick="fetch">{{ 'Получить данные' }}</app-btn>
           </div>
         </div>
 
+        <ul class="list-group">
+          <li class="list-group-item">{{ getUserData }}</li>
+        </ul>
 
-        <div v-if="isSubmitted">
+        <!-- <div v-if="isSubmitted">
           <p>Name: {{ userData.name }}</p>
           <p>Phone: {{ userData.phone }}</p>
           <p>Email: {{ userData.email }}</p>
@@ -134,8 +141,7 @@
           <p style="white-space: pre">Comment: {{ userData.comment }}</p>
           <p>Mailing: {{ userData.mailing }}</p>
           <p>Gender: {{ userData.gender }}</p>
-        </div>
-
+        </div> -->
 
       </form>
     </div>
@@ -161,6 +167,8 @@
           mailing: true,
           gender: 'Male'
         },
+        // getUserData: [],
+        getUserData: {},
         arrayOfObjects: 
         [
           {name: 'Самовывоз'},
@@ -181,6 +189,37 @@
     methods: {
       methodToRunOnSelect: function(payload) {
         this.object = payload;
+      },
+      submit: function() {
+        this.isSubmitted = true;
+        this.$http.post('/upload.php', this.userData)
+            .then(response => {
+              console.log('post-ok');
+              console.log(response);
+            }, error => {
+              console.log('post-error');
+              console.log(error);
+            });
+      },
+      fetch: function() {
+        this.$http.get('/upload.php')
+            .then(response => {
+              console.log('get-ok');
+              console.log(response);
+              return response.json();
+            }, error => {
+              console.log('get-error');
+              console.log(error);
+            })
+            .then(data => {
+              console.log(data);
+              // const resultArray = [];
+              // for (let key in data) {
+              //   resultArray.push(data[key]);
+              // }
+              // this.getUserData = resultArray;
+              this.getUserData = data;
+            });
       }
     },
     components: {

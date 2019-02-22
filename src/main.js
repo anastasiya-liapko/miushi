@@ -1,17 +1,17 @@
-import Vue from 'vue'
-import App from './App.vue'
-import './assets/css/fonts.css'
+import Vue from 'vue';
+import App from './App.vue';
+import './assets/css/fonts.css';
 
 // npm install hamburger
-import 'hamburgers/dist/hamburgers.css'
+import 'hamburgers/dist/hamburgers.css';
 
 // npm i bootstrap-vue
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import BootstrapVue from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 // npm install vuelidate
-import Vuelidate from 'vuelidate'
+import Vuelidate from 'vuelidate';
 
 // npm install vue-dropdowns // (select)
 
@@ -21,12 +21,21 @@ import 'pretty-checkbox-vue/dist/pretty-checkbox-vue.js';
 import PrettyCheckbox from 'pretty-checkbox-vue';
 
 // npm install animate.css
-import 'animate.css/animate.min.css'
+import 'animate.css/animate.min.css';
+
+// npm install vue-resource
+import VueResource from 'vue-resource';
+
+// npm install vue-awesome-swiper
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'swiper/dist/css/swiper.css'
 
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
 Vue.use(PrettyCheckbox);
+Vue.use(VueResource);
+Vue.use(VueAwesomeSwiper);
 
 
 Vue.directive('highlight', {
@@ -67,5 +76,12 @@ new Vue({
   el: '#app',
   render: h => h(App)
 })
+
+
+Vue.http.options.emulateJSON = true; // without $ ($ is used when accessing from vue instance)
+Vue.http.options.emulateHTTP = true; // without $ ($ is used when accessing from vue instance)
+
+
+
 
 
