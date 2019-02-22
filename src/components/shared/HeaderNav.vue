@@ -86,8 +86,6 @@
 </script>
 
 <style lang="sass">
-  .nav  
-    // padding-right: 20px
   .nav__item
     position: relative
     list-style: none

@@ -1,5 +1,6 @@
 <template>
-  <div class="logo" @click="switchPage('app-main')">
+  <!-- <div class="logo" @click="switchPage('app-main')"> -->
+  <router-link to="/" tag="div" exact class="logo">
     <img 
         class="logo__desktop" 
         src="../../assets/img/miushi-logo-desktop.png" 
@@ -8,7 +9,8 @@
         class="logo__mobile" 
         src="../../assets/img/miushi-logo-mobile.png" 
         alt="logo">
-  </div>
+  <!-- </div> -->
+  </router-link>
 </template>
 
 <script>

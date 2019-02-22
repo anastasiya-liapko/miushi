@@ -4,6 +4,8 @@
 
     <app-header></app-header>
 
+    <router-view>
+
     <!-- <transition-group name="slide-page" mode="in-out"> -->
     <!-- <keep-alive> -->
       <!-- <component :is="selectedPage" :key="selectedPage"> -->
@@ -11,6 +13,8 @@
       </component>
     <!-- </keep-alive> -->
     <!-- </transition-group> -->
+
+    </router-view>
 
     <app-footer></app-footer>
   </div>

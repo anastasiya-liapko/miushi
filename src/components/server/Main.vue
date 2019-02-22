@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <swiper class="swiper-main-container" ref="awesomeSwiperMain" :options="swiperOptionMain" @set-translate="onSetTranslate">
+    <swiper class="swiper-container swiper-container_main" ref="awesomeSwiperMain" :options="swiperOptionMain" @set-translate="onSetTranslate">
       <!-- slides -->
       <swiper-slide>I'm Slide 1</swiper-slide>
       <swiper-slide>I'm Slide 2</swiper-slide>
@@ -17,7 +17,7 @@
 
     <br>
 
-    <swiper-set class="swiper-set-container" ref="awesomeSwiperSet" :options="swiperOptionSet">
+    <swiper-set class="swiper-container swiper-container_set" ref="awesomeSwiperSet" :options="swiperOptionSet">
       <swiper-set-slide v-for="i in 3">I'm Slide {{ i }}</swiper-set-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
     </swiper-set>
@@ -32,6 +32,10 @@
     data: function() {
       return {
         swiperOptionMain: {
+          speed: 2000,
+          autoplay: {
+            delay: 15000,
+          },
           pagination: {
             el: '.swiper-pagination',
             clickable: true
@@ -42,6 +46,7 @@
           }
         },
         swiperOptionSet: {
+          speed: 1000,
           pagination: {
             el: '.swiper-pagination',
             clickable: true
@@ -93,16 +98,18 @@
     height: 200px
     background-color: pink
 
-  .swiper-main-container
+  .swiper-container
+    width: 100%
+    height: 470px
+    background-color: purple
+
+  .swiper-container_main
     max-width: 1920px
     width: 100%
     height: 675px
     background-color: yellow
 
-  .swiper-set-container
-    width: 100%
-    height: 470px
-    background-color: purple
+  
 
 </style>
 

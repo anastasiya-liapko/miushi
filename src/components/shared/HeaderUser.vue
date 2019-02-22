@@ -1,11 +1,14 @@
 <template>
   <div class="user row flex-nowrap flex-lg-grow-1">
-    <p class="user__cabinet row col-lg-6 justify-content-center align-items-center">
-      <span @click="switchPage('app-cabinet')">Кабинет</span>
-    </p>
-    <p class="user__cart row col-lg-6 justify-content-center align-items-center">
-      <span @click="switchPage('app-cart')">Корзина</span>
-    </p>
+    <router-link to="/cabinet" tag="p" active-class="isActive" exact class="user__cabinet row col-lg-6 justify-content-center align-items-center">
+    <!-- <router-link to="/cabinet/10" tag="p" active-class="isActive" exact class="user__cabinet row col-lg-6 justify-content-center align-items-center"> -->
+      <!-- <span @click="switchPage('app-cabinet')">Кабинет</span> -->
+      <span>Кабинет</span>
+    </router-link>
+    <router-link to="/cart" tag="p" active-class="isActive" exact class="user__cart row col-lg-6 justify-content-center align-items-center">
+      <!-- <span @click="switchPage('app-cart')">Корзина</span> -->
+      <span>Корзина</span>
+    </router-link>
   </div>
 </template>
 
@@ -14,11 +17,24 @@
 
 
   export default {
-    methods: {
-      switchPage: function(page) {
-        eventBus.switchPage(page);
-      }
-    }
+    // data() {
+    //   return {
+    //     id: this.$route.params.id
+    //   }
+    // },
+    // watch: {
+    //   '$route'(to, from) {
+    //     this.id = to.params.id;
+    //   }
+    // },
+    // methods: {
+    //   navigateToHome() {
+    //     this.$route.push('/');
+    //   },
+    //   switchPage: function(page) {
+    //     eventBus.switchPage(page);
+    //   }
+    // }
   }
 </script>
 
@@ -36,8 +52,10 @@
       background-position: center
       background-size: cover
       background-repeat: no-repeat
-    span:hover
+    &:hover
       cursor: pointer
+  .isActive
+    background-color: red
 
   .user__cabinet
     span::before

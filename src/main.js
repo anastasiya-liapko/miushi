@@ -30,12 +30,17 @@ import VueResource from 'vue-resource';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'swiper/dist/css/swiper.css'
 
+// npm install vue-router
+import VueRouter from 'vue-router';
+import { routes } from './routes.js';
+
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
 Vue.use(PrettyCheckbox);
 Vue.use(VueResource);
 Vue.use(VueAwesomeSwiper);
+Vue.use(VueRouter);
 
 
 Vue.directive('highlight', {
@@ -71,9 +76,15 @@ export const eventBus = new Vue({
   }
 });
 
+const router = new VueRouter({
+  routes, // routes: routes
+  mode: 'history'
+});
+
 
 new Vue({
   el: '#app',
+  router, // router: router
   render: h => h(App)
 })
 
