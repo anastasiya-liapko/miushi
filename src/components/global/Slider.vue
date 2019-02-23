@@ -36,9 +36,6 @@
         swiperOption: {
           loop: true,
           speed: 1000,
-          autoplay: {
-            delay: 15000,
-          },
           slidesPerView: 4,
           breakpoints: {
             576: {
