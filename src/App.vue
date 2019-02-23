@@ -9,8 +9,8 @@
     <!-- <transition-group name="slide-page" mode="in-out"> -->
     <!-- <keep-alive> -->
       <!-- <component :is="selectedPage" :key="selectedPage"> -->
-      <component :is="selectedPage">
-      </component>
+      <!-- <component :is="selectedPage">
+      </component> -->
     <!-- </keep-alive> -->
     <!-- </transition-group> -->
 
@@ -34,14 +34,14 @@
   export default {
     data: function() {
       return {
-        selectedPage: 'app-main'
+        // selectedPage: 'app-main'
         // show: false
       }
     },
     created: function() {
-      eventBus.$on('selectPage', (page) => {
-        this.selectedPage = page;
-      });
+      // eventBus.$on('selectPage', (page) => {
+      //   this.selectedPage = page;
+      // });
       // eventBus.$on('changeShow', (show) => {
       //   this.show = show;
       // });
@@ -82,42 +82,14 @@
     margin: 0
     padding: 0
 
-  .overlay
-    z-index: 20
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    background-color: rgba(0, 0, 0, 0.4)
-
-  .title
-    position: relative
-    margin: 50px 0
-    padding: 0 140px
-    font-family: 'Marck Script', cursive
-    font-size: 40px
-    line-height: 1
-    font-weight: 400
-    text-align: center
-    color: rgb(50, 80, 90)
-    &::before,
-    &::after
-      content: ''
-      position: absolute
-      top: 50%
-      width: 109px
-      height: 40px
-      margin-top: -20px
-      background-repeat: no-repeat
-      background-position: center
-      background-size: cover
-    &::before
-      left: 0
-      background-image: url('./assets/img/title-left-pic.png')
-    &::after
-      right: 0
-      background-image: url('./assets/img/title-right-pic.png')
+  // .overlay
+  //   z-index: 20
+  //   position: absolute
+  //   top: 0
+  //   bottom: 0
+  //   left: 0
+  //   right: 0
+  //   background-color: rgba(0, 0, 0, 0.4)
 
   .icomoon
     width: 30px

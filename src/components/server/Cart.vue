@@ -5,13 +5,15 @@
         
 
         <div class="cart__items row flex-column align-items-center">
-          <h2 class="title">Ваш заказ</h2>
+          <!-- <h2 class="title">Ваш заказ</h2> -->
+          <app-title>{{ 'Ваш заказ' }}</app-title>
         </div>
         
 
         <div class="cart__delivery row flex-column pb-5">
           <!-- <h2 class="title title_without-pics" v-highlight:color.delayed="'red'">Получатель и адрес доставки</h2> -->
-          <h2 class="title title_without-pics">Получатель и адрес доставки</h2>
+          <!-- <h2 class="title title_without-pics">Получатель и адрес доставки</h2> -->
+          <app-title class="title_without-pics">{{ 'Получатель и адрес доставки' }}</app-title>
 
           <div class="row flex-column flex-md-row justify-content-between w-100">
             <div div class="row flex-column justify-content-start col-md-6 pr-md-4">
@@ -151,6 +153,7 @@
 <script>
   import Select from '../global/Select.vue';
   import Btn from '../global/Btn.vue';
+  import Title from '../global/Title.vue';
 
 
   export default {
@@ -224,7 +227,8 @@
     },
     components: {
         'app-select': Select,
-        'app-btn': Btn
+        'app-btn': Btn,
+        'app-title': Title
     }
   }
 </script>

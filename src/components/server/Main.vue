@@ -1,15 +1,7 @@
 <template>
   <div class="main">
-    <swiper class="swiper-container swiper-container_main" ref="awesomeSwiperMain" :options="swiperOptionMain" @set-translate="onSetTranslate">
-      <!-- slides -->
-      <swiper-slide>I'm Slide 1</swiper-slide>
-      <swiper-slide>I'm Slide 2</swiper-slide>
-      <swiper-slide>I'm Slide 3</swiper-slide>
-      <swiper-slide>I'm Slide 4</swiper-slide>
-      <swiper-slide>I'm Slide 5</swiper-slide>
-      <swiper-slide>I'm Slide 6</swiper-slide>
-      <swiper-slide>I'm Slide 7</swiper-slide>
-      <!-- Optional controls -->
+    <swiper class="swiper-container_main" ref="awesomeSwiperMain" :options="swiperOptionMain">
+      <swiper-slide class="swiper-slide_main" v-for="i in 3">I'm Slide {{ i }}</swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
       <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div>
@@ -17,25 +9,71 @@
 
     <br>
 
-    <swiper-set class="swiper-container swiper-container_set" ref="awesomeSwiperSet" :options="swiperOptionSet">
-      <swiper-set-slide v-for="i in 3">I'm Slide {{ i }}</swiper-set-slide>
-      <div class="swiper-pagination"  slot="pagination"></div>
-    </swiper-set>
+    <div class="sets">
+      <div class="container">
+        <app-title>{{ 'Сеты' }}</app-title>
+        <app-slider :slides="sets"></app-slider>
+      </div>
+    </div>
+
+    <div class="rolls">
+      <div class="container">
+        <app-title>{{ 'Роллы' }}</app-title>
+        <app-slider :slides="sets"></app-slider>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
   import { swiper, swiperSlide } from 'vue-awesome-swiper';
+  import Slider from '../global/Slider.vue';
+  import Title from '../global/Title.vue';
 
 
   export default {
-    data: function() {
+    data() {
       return {
+        main: [
+          {
+
+          }
+        ],
+        sets: [
+          {
+            img: '',
+            quantity: 72,
+            weight: 1560,
+            kkal: 1700,
+            price: 2050
+          },
+          {
+            quantity: 24,
+            weight: 960,
+            kkal: 1800,
+            price: 1590
+          },
+          {
+            quantity: 14,
+            weight: 450,
+            kkal: 400,
+            price: 510
+          },
+          {
+            quantity: 16,
+            weight: 460,
+            kkal: 490,
+            price: 400
+          }
+        ],
         swiperOptionMain: {
+          loop: true,
           speed: 2000,
           autoplay: {
             delay: 15000,
           },
+          slidesPerView: 1,
           pagination: {
             el: '.swiper-pagination',
             clickable: true
@@ -44,70 +82,31 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
           }
-        },
-        swiperOptionSet: {
-          speed: 1000,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          }
-        },
-        swiperOptionRoll: {
-
-        },
-        swiperOptionPizza: {
-
-        },
-        swiperOptionWok: {
-
-        },
-        swiperOptionNew: {
-
-        },
-        swiperOptionPromotion: {
-
         }
       }
     },
     computed: {
-      swiperMain() {
-        return this.$refs.awesomeSwiperMain.swiper
-      },
-      swiperSet() {
-        return this.$refs.awesomeSwiperSet.swiper
-      }
-    },
-    mounted() {
-      console.log('this is swiper main instance object', this.swiperMain, 'set instance', this.swiperSet)
-    },
-    methods: {
-      onSetTranslate() {
-        console.log('onSetTranslate')
+      swiper() {
+        return this.$refs.awesomeSwiper.swiper
       }
     },
     components: {
-      swiperSet: swiper,
-      swiperSetSlide: swiperSlide
+      'app-slider': Slider,
+      'app-title': Title
     }
   }
 </script>
 
 <style lang="sass" scoped>
-  .main
-    width: 100%
-    height: 200px
-    background-color: pink
-
-  .swiper-container
-    width: 100%
-    height: 470px
-    background-color: purple
-
   .swiper-container_main
-    max-width: 1920px
-    width: 100%
+    width: 1920px
     height: 675px
     background-color: yellow
+    
+
+  @media(max-width: 1919px)
+    .swiper-container_main
+      width: 100%
 
   
 
