@@ -13,9 +13,9 @@
           <span class="item__price-currency align-self-start"> руб.</span>
         </p>
         <div class="item__quantity">
-          <button class="item__minus">-</button>
-          <span>1</span>
-          <button class="item__plus">+</button>
+          <button class="item__decrement" @click="decrement">-</button>
+          <span>{{ counter }}</span>
+          <button class="item__increment" @click="asyncIncrement({by: 2, duration: 500})">+</button>
         </div>
       </div>
       <app-btn class="btn btn_border btn_red btn_add_to_cart">{{ 'В корзину' }}</app-btn>
@@ -25,10 +25,41 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+  // import { mapMutations } from 'vuex';
+  import { mapActions } from 'vuex';
+  import * as types from '../../store/types.js';
   import Btn from './Btn.vue';
 
   export default {
     props: ['item'],
+    computed: {
+      // counter1() {
+      //   return this.$store.state.counter;
+      // },
+      ...mapGetters({
+        counter: types.COUNTER
+      })
+    },
+    methods: {
+      // increment() {
+      //   this.$store.commit('increment');
+      // },
+      // decrement() {
+      //   this.$store.commit('decrement');
+      // },
+      // ...mapMutations([
+      //   'increment',
+      //   'decrement'
+      // ])
+      ...mapActions([
+        'asyncIncrement',
+        'decrement'
+      ]),
+      increment(by) {
+        this.$store.dispatch('increment', by);
+      }
+    },
     components: {
       'app-btn': Btn
     }
@@ -37,9 +68,6 @@
 
 <style lang="sass">
   .item
-    width: 200px
-    height: 200px
-    // min-height: 200px
     background-color: rgb(255, 255, 255)
     border-radius: 10px
     box-shadow: 0px 4px 29px 0px rgba(0, 0, 0, 0.08)

@@ -34,6 +34,16 @@ import 'swiper/dist/css/swiper.css'
 import VueRouter from 'vue-router';
 import { routes } from './routes.js';
 
+import { store } from './store/store.js';
+
+// npm install --save-dev babel-preset-stage-3
+// in '.babelrc' {
+//                 "presets": [
+//                   ["env", { "modules": false }],
+//                   "stage-3"
+//                 ]
+//               }
+
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
@@ -93,6 +103,7 @@ const router = new VueRouter({
 
 new Vue({
   el: '#app',
+  store, // store: store
   router, // router: router
   render: h => h(App)
 })
