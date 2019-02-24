@@ -1,21 +1,9 @@
 <template>
   <div id="app">
-    <!-- <div class="overlay" v-if="show"></div> -->
-
     <app-header></app-header>
 
     <transition name="max-height-page" mode="out-in">
-      <router-view class="page">
-
-    <!-- <transition-group name="slide-page" mode="in-out"> -->
-    <!-- <keep-alive> -->
-      <!-- <component :is="selectedPage" :key="selectedPage"> -->
-      <!-- <component :is="selectedPage">
-      </component> -->
-    <!-- </keep-alive> -->
-    <!-- </transition-group> -->
-
-      </router-view>
+      <router-view class="page"></router-view>
     </transition>
 
     <app-footer></app-footer>
@@ -25,7 +13,6 @@
 <script>
   import Header from './components/shared/Header.vue';
   import Footer from './components/shared/Footer.vue';
-
   import Main from './components/server/Main.vue';
   import Cart from './components/server/Cart.vue';
   import Cabinet from './components/server/Cabinet.vue';
@@ -34,13 +21,14 @@
 
 
   export default {
-    data: function() {
+    data() {
       return {
         // selectedPage: 'app-main'
         // show: false
       }
     },
-    created: function() {
+    created() {
+      this.$store.dispatch('initProducts');
       // eventBus.$on('selectPage', (page) => {
       //   this.selectedPage = page;
       // });
@@ -86,15 +74,6 @@
     margin: 0
     padding-left: 0
     padding-right: 0
-
-  // .overlay
-  //   z-index: 20
-  //   position: absolute
-  //   top: 0
-  //   bottom: 0
-  //   left: 0
-  //   right: 0
-  //   background-color: rgba(0, 0, 0, 0.4)
 
   .page 
     overflow: hidden
@@ -208,7 +187,6 @@
   .slide-leave
     
   .slide-leave-active
-    // position: absolute
     transform-origin: top
     animation: slide-out 0.2s linear forwards
 
@@ -305,7 +283,6 @@
       max-height: 0
 
 
-
   // slide height
   .max-height-page-enter
 
@@ -328,6 +305,7 @@
       max-height: 3000px
     to
       max-height: 0
+
 
   // hover for round button
   // .btn_green
@@ -394,5 +372,6 @@
       &::after
         display: none
 
-
 </style>
+
+

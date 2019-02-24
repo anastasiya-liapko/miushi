@@ -8,40 +8,77 @@
       <p class="item__name">{{ item.name }}</p>
       <p class="item__descr">{{ item.quantity }} шт. | {{ item.weight }} г. | {{ item.kkal }} kkal</p>
       <div class="item__pick row flex-nowrap justify-content-between">
-        <p class="item__price row flex-nowrap">
+        <p class="item__price row flex-nowrap" @click="addToCart">
           <span class="item__price-number align-self-end">{{ item.price }}</span>
           <span class="item__price-currency align-self-start"> руб.</span>
         </p>
         <div class="item__quantity">
           <button class="item__decrement" @click="decrement">-</button>
-          <span>{{ counter }}</span>
-          <button class="item__increment" @click="asyncIncrement({by: 2, duration: 500})">+</button>
+          <span>{{ quantity }}</span>
+          <button class="item__increment" @click="increment">+</button>
         </div>
       </div>
-      <app-btn class="btn btn_border btn_red btn_add_to_cart">{{ 'В корзину' }}</app-btn>
+      <app-btn class="btn btn_border btn_red btn_add_to_cart" @btnClick="addToCart" :disabled="quantity <= 0">{{ 'В корзину' }}</app-btn>
+      <br>
+      <app-btn class="btn btn_border btn_red btn_add_to_cart" @btnClick="removeFromCart" :disabled="quantity <= 0">{{ 'Удалить товар' }}</app-btn>
     </div>
   </div>
   <!-- </router-link> -->
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  // import { mapGetters } from 'vuex';
   // import { mapMutations } from 'vuex';
-  import { mapActions } from 'vuex';
-  import * as types from '../../store/types.js';
-  import Btn from './Btn.vue';
+import { mapActions } from 'vuex';
+// import * as types from '../../store/types.js';
+import Btn from './Btn.vue';
 
-  export default {
+export default {
     props: ['item'],
+    data() {
+        return {
+            quantity: 0
+        }
+    },
     computed: {
       // counter1() {
       //   return this.$store.state.counter;
       // },
-      ...mapGetters({
-        counter: types.COUNTER
-      })
+      // ...mapGetters({
+      //   counter: types.COUNTER
+      // })
     },
     methods: {
+        ...mapActions([
+            'delProduct'
+        ]),
+        addToCart() {
+            console.log('add to cart');
+            const order = {
+                id: this.item.id,
+                price: this.item.price,
+                quantity: this.quantity
+            }
+            this.$store.dispatch('buyProduct', order);
+            this.quantity = 0;
+        },
+        removeFromCart() {
+            console.log('remove from cart');
+            const order = {
+                id: this.item.id,
+                price: this.item.price,
+                quantity: this.item.quantity
+            }
+            this.delProduct();
+        },
+        increment() {
+            this.quantity++;
+        },
+        decrement() {
+            if (this.quantity > 0) {
+                this.quantity--;
+            }
+        }
       // increment() {
       //   this.$store.commit('increment');
       // },
@@ -52,18 +89,18 @@
       //   'increment',
       //   'decrement'
       // ])
-      ...mapActions([
-        'asyncIncrement',
-        'decrement'
-      ]),
-      increment(by) {
-        this.$store.dispatch('increment', by);
-      }
+      // ...mapActions([
+      //   'asyncIncrement',
+      //   'decrement'
+      // ]),
+      // increment(by) {
+      //   this.$store.dispatch('increment', by);
+      // }
     },
     components: {
-      'app-btn': Btn
+        'app-btn': Btn
     }
-  }
+}
 </script>
 
 <style lang="sass">

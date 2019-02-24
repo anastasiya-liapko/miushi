@@ -7,7 +7,9 @@
         <div class="cart__items row flex-column align-items-center">
           <!-- <h2 class="title">Ваш заказ</h2> -->
           <app-title>{{ 'Ваш заказ' }}</app-title>
-          <!-- <app-item class="item_cart"></app-item> -->
+          <div v-for="item in items">
+              <app-item class="item_cart" :item="item"></app-item>
+          </div>
         </div>
         
 
@@ -152,6 +154,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
   import Select from '../global/Select.vue';
   import Btn from '../global/Btn.vue';
   import Title from '../global/Title.vue';
@@ -160,36 +163,32 @@
 
   export default {
     data() {
-      return {
-        userData: {
-          name: '',
-          phone: '',
-          email: '',
-          date: '',
-          delivery: 'Самовывоз',
-          address: '',
-          comment: '',
-          mailing: true,
-          gender: 'Male'
-        },
+        return {
+            userData: {
+                name: '',
+                phone: '',
+                email: '',
+                date: '',
+                delivery: 'Самовывоз',
+                address: '',
+                comment: '',
+                mailing: true,
+                gender: 'Male'
+            },
         // getUserData: [],
-        getUserData: {},
-        arrayOfObjects: 
-        [
-          {name: 'Самовывоз'},
-          {name: 'Курьер'}
-        ],
-        object: 
-        {
-          name: 'Самовывоз',
-        },
-        isSubmitted: false
-      }
+            getUserData: {},
+            arrayOfObjects: [ {name: 'Самовывоз'}, {name: 'Курьер'} ],
+            object: { name: 'Самовывоз' },
+            isSubmitted: false
+        }
     },
     computed: {
-      delivery: function() {
-        return this.userData.delivery = this.object.name;
-      }
+        ...mapGetters({
+            items: 'order'
+        }),
+        delivery: function() {
+            return this.userData.delivery = this.object.name;
+        }
     },
     methods: {
       methodToRunOnSelect: function(payload) {

@@ -27,14 +27,14 @@
     <div class="slider sets">
       <div class="container">
         <app-title>{{ 'Сеты' }}</app-title>
-        <app-slider :slides="sets"></app-slider>
+        <app-slider :slides="products"></app-slider>
       </div>
     </div>
 
     <div class="slider rolls">
       <div class="container">
         <app-title>{{ 'Роллы' }}</app-title>
-        <app-slider :slides="rolls"></app-slider>
+        <app-slider :slides="products"></app-slider>
       </div>
     </div>
 
@@ -48,6 +48,8 @@
   import Slider from '../global/Slider.vue';
   import Title from '../global/Title.vue';
   import Btn from '../global/Btn.vue';
+
+  import { mapGetters } from 'vuex';
 
 
   export default {
@@ -73,82 +75,6 @@
             'descr': 'скидка 25%'
           }
         ],
-        sets: [
-          {
-            id: 1,
-            img: 'set-10.png',
-            name: 'сет №10',
-            quantity: 72,
-            weight: 1560,
-            kkal: 1700,
-            price: 2050
-          },
-          {
-            id: 2,
-            img: 'set-8.png',
-            name: 'сет №8',
-            quantity: 24,
-            weight: 960,
-            kkal: 1800,
-            price: 1590
-          },
-          {
-            id: 3,
-            img: 'set-5.png',
-            name: 'сет №5',
-            quantity: 14,
-            weight: 450,
-            kkal: 400,
-            price: 510
-          },
-          {
-            id: 4,
-            img: 'set-6.png',
-            name: 'сет №6',
-            quantity: 16,
-            weight: 460,
-            kkal: 490,
-            price: 400
-          }
-        ],
-        rolls: [
-          {
-            id: 5,
-            img: 'roll-1.png',
-            name: 'кунсей батакон',
-            quantity: 8,
-            weight: 250,
-            kkal: 350,
-            price: 260
-          },
-          {
-            id: 6,
-            img: 'roll-2.png',
-            name: 'унаги диру',
-            quantity: 8,
-            weight: 960,
-            kkal: 800,
-            price: 280
-          },
-          {
-            id: 7,
-            img: 'roll-3.png',
-            name: 'филадельфия',
-            quantity: 8,
-            weight: 450,
-            kkal: 400,
-            price: 280
-          },
-          {
-            id: 8,
-            img: 'roll-4.png',
-            name: 'мексиканский',
-            quantity: 8,
-            weight: 460,
-            kkal: 490,
-            price: 290
-          }
-        ],
         swiperOptionMain: {
           loop: true,
           speed: 1000,
@@ -170,7 +96,10 @@
     computed: {
       swiper() {
         return this.$refs.awesomeSwiper.swiper;
-      }
+      },
+      ...mapGetters([
+        'products'
+      ])
     },
     components: {
       'app-slider': Slider,

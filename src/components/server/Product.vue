@@ -11,7 +11,7 @@
   export default {
     methods: {
       navigateToMain() {
-        this.$router.push({ name: 'Home' });
+        this.$router.push({ name: 'Main' });
       }
     }
   }
