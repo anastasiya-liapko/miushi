@@ -7,6 +7,7 @@
         <div class="cart__items row flex-column align-items-center">
           <!-- <h2 class="title">Ваш заказ</h2> -->
           <app-title>{{ 'Ваш заказ' }}</app-title>
+          <!-- <app-item class="item_cart"></app-item> -->
         </div>
         
 
@@ -154,6 +155,7 @@
   import Select from '../global/Select.vue';
   import Btn from '../global/Btn.vue';
   import Title from '../global/Title.vue';
+  import Item from '../global/Item.vue';
 
 
   export default {
@@ -228,7 +230,8 @@
     components: {
         'app-select': Select,
         'app-btn': Btn,
-        'app-title': Title
+        'app-title': Title,
+        'app-item': Item
     }
   }
 </script>

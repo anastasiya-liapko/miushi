@@ -77,10 +77,13 @@
     height: auto
 
   .row,
-  div[class^='col-'],
+  div[class*='col-'],
+  h1[class*='col-'],
+  p[class*='col-'],
   p
     margin: 0
-    padding: 0
+    padding-left: 0
+    padding-right: 0
 
   // .overlay
   //   z-index: 20

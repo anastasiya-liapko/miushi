@@ -13,12 +13,13 @@
 <style lang="sass">
   .title 
     padding: 0
+    overflow: hidden
     .title__text
       position: relative
       margin: 50px 0
       padding: 0 140px
       font-family: 'Marck Script', cursive
-      font-size: 40px
+      font-size: 60px
       line-height: 1
       font-weight: 400
       text-align: center
@@ -54,10 +55,10 @@
   @media(max-width: 575px)
     .title
       .title__text
-        padding: 0 90px
+        padding: 0 75px
         &::before,
         &::after
-          width: 77px
+          width: 70px
           height: 28px
 
     .title_without-pics
