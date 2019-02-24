@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="'product/' + item.id" tag="div" class="item">
-  <!-- <div class="item"> -->
+  <!-- <router-link :to="{name: 'Item', params: { id: $route.params.id }}" tag="div" class="item"> -->
+  <div class="item">
     <div class="item__image row justify-content-center align-items-center">
       <img :src="'dist/' + item.img" alt="">
     </div>
@@ -20,8 +20,8 @@
       </div>
       <app-btn class="btn btn_border btn_red btn_add_to_cart">{{ 'В корзину' }}</app-btn>
     </div>
-  <!-- </div> -->
-  </router-link>
+  </div>
+  <!-- </router-link> -->
 </template>
 
 <script>
@@ -37,6 +37,8 @@
 
 <style lang="sass">
   .item
+    width: 200px
+    height: 200px
     // min-height: 200px
     background-color: rgb(255, 255, 255)
     border-radius: 10px

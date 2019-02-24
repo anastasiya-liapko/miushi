@@ -14,9 +14,9 @@
       <span>Работаем с 11.00 до 23.00</span>
     </p>
 
-    <p class="contacts__call call order-2 order-lg-4">
+    <router-link :to="{ hash: '#callback' }" tag="p" class="contacts__call call order-2 order-lg-4">
       <app-btn class="btn_border btn_green" @btnClick="value = $event">{{ 'Обратный звонок' }}</app-btn>
-    </p>
+    </router-link>
 
   </div>
 </template>

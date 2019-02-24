@@ -1,8 +1,9 @@
 <template>
   <div class="product">
-    <button @click="navigateToMain">Вернуться назад</button>
-    <hr>
-    <router-view></router-view>
+    <div class="container">
+      <button @click="navigateToMain">Вернуться назад</button>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
   export default {
     methods: {
       navigateToMain() {
-        this.$router.push('/');
+        this.$router.push({ name: 'Home' });
       }
     }
   }
 </script>
 
 <style lang="sass">
+  .product
+    border-top: 1px solid rgb(242, 242, 242)
 
 </style>

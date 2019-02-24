@@ -1,6 +1,7 @@
 <template>
   <swiper class="swiper-container_items" ref="awesomeSwiper" :options="swiperOption">
     <swiper-slide class="swiper-slide_items" v-for="slide in slides" :key="slide.id">
+      <!-- <router-link :to="{name: 'Item', params: { id: slide.id }}"> -->
       <!-- <router-link :to="'product/' + slide.id" tag="div"> -->
         <app-item class="item_main" :item="slide"></app-item>
       <!-- </router-link> -->
@@ -44,6 +45,8 @@
           slidesPerView: 4,
           breakpoints: {
             576: {
+              slidesPerView: 'auto',
+              centeredSlides: true,
               spaceBetween: 15
             },
             767: {

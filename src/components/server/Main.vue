@@ -38,6 +38,8 @@
       </div>
     </div>
 
+    <div id="callback" class="callback"></div>
+
   </div>
 </template>
 
@@ -186,7 +188,6 @@
   .swiper-slide_main
     width: 1920px
     height: 675px
-    background-color: yellow
 
   .swiper-slide_main
     background-position: center
@@ -195,7 +196,7 @@
     .container,
     .container>div
       height: 100%
-  
+
   .swiper-slide__title_main
     width: 580px
     font-family: 'Marck Script', cursive
@@ -226,6 +227,11 @@
     background-image: -moz-linear-gradient( 90deg, rgb(183,31,36) 0%, rgb(223,32,36) 100%)
     background-image: -webkit-linear-gradient( 90deg, rgb(183,31,36) 0%, rgb(223,32,36) 100%)
     background-image: -ms-linear-gradient( 90deg, rgb(183,31,36) 0%, rgb(223,32,36) 100%)
+
+  .callback
+    width: 100%
+    height: 200px
+    background-color: purple
 
 
   @media(max-width: 1919px)

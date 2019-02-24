@@ -4,7 +4,8 @@
 
     <app-header></app-header>
 
-    <router-view>
+    <transition name="max-height-page" mode="out-in">
+      <router-view class="page">
 
     <!-- <transition-group name="slide-page" mode="in-out"> -->
     <!-- <keep-alive> -->
@@ -14,7 +15,8 @@
     <!-- </keep-alive> -->
     <!-- </transition-group> -->
 
-    </router-view>
+      </router-view>
+    </transition>
 
     <app-footer></app-footer>
   </div>
@@ -93,6 +95,9 @@
   //   left: 0
   //   right: 0
   //   background-color: rgba(0, 0, 0, 0.4)
+
+  .page 
+    overflow: hidden
 
   .icomoon
     width: 30px
@@ -228,14 +233,14 @@
 
   .slide-page-enter-active
     transform-origin: top
-    animation: slide-page-in 0.2s linear forwards
+    animation: slide-page-in 2s linear forwards
 
   .slide-page-leave
     
   .slide-page-leave-active
     position: absolute
     transform-origin: bottom
-    animation: slide-page-out 0.2s linear forwards
+    animation: slide-page-out 2s linear forwards
 
   @keyframes slide-page-in
     from
@@ -296,6 +301,31 @@
   @keyframes max-height-out
     from
       max-height: 500px
+    to
+      max-height: 0
+
+
+
+  // slide height
+  .max-height-page-enter
+
+  .max-height-page-enter-active
+    animation: max-height-page-in 0.7s ease-in-out
+
+  .max-height-page-leave
+    
+  .max-height-page-leave-active
+    animation: max-height-page-out 0.7s ease-in-out
+
+  @keyframes max-height-page-in
+    from
+      max-height: 0
+    to
+      max-height: 3000px
+
+  @keyframes max-height-page-out
+    from
+      max-height: 3000px
     to
       max-height: 0
 
