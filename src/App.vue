@@ -13,11 +13,11 @@
 <script>
   import Header from './components/shared/Header.vue';
   import Footer from './components/shared/Footer.vue';
-  import Main from './components/server/Main.vue';
-  import Cart from './components/server/Cart.vue';
-  import Cabinet from './components/server/Cabinet.vue';
+  // import Main from './components/server/Main.vue';
+  // import Cart from './components/server/Cart.vue';
+  // import Cabinet from './components/server/Cabinet.vue';
 
-  import { eventBus } from './main.js';
+  // import { eventBus } from './main.js';
 
 
   export default {
@@ -39,9 +39,9 @@
     components: {
       'app-header': Header,
       'app-footer': Footer,
-      'app-main': Main,
-      'app-cart': Cart,
-      'app-cabinet': Cabinet
+      // 'app-main': Main,
+      // 'app-cart': Cart,
+      // 'app-cabinet': Cabinet
     }
   }
 </script>
@@ -305,6 +305,30 @@
       max-height: 3000px
     to
       max-height: 0
+
+
+  // slide-fade
+  // .slide-fade-enter-active
+  //   animation: slide-fade-in 200ms ease-out forwards
+
+  // .slide-fade-leave-active
+  //   animation: slide-fade-out 200ms ease-out forwards
+
+  // @keyframes slide-fade-in
+  //   from
+  //     transform: translateY(-30px)
+  //     opacity: 0
+  //   to
+  //     transform: translateY(0)
+  //     opacity: 1
+
+  // @keyframes slide-fade-out
+  //   from
+  //     transform: translateY(0)
+  //     opacity: 1
+  //   to
+  //     transform: translateY(-30px)
+  //     opacity: 0
 
 
   // hover for round button

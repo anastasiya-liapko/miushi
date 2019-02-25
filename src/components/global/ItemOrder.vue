@@ -13,12 +13,12 @@
           <span class="item__price-currency align-self-start"> руб.</span>
         </p>
         <div class="item__quantity">
-          <button class="item__decrement" @click="decrement">-</button>
+          <!-- <button class="item__decrement" @click.prevent="decrement">-</button> -->
           <span>{{ quantity }}</span>
-          <button class="item__increment" @click="increment">+</button>
+          <!-- <button class="item__increment" @click.prevent="increment">+</button> -->
         </div>
       </div>
-      <app-btn class="item_main-btn btn btn_border btn_red btn_add_to_cart"" @btnClick="addToCart" :disabled="quantity <= 0">{{ 'В корзину' }}</app-btn>
+      <app-btn class="item_cart-btn btn btn_border btn_red btn_add_to_cart" v-if="$route.path === '/cart'" @btnClick="removeFromCart" :disabled="item.quantity <= 0">{{ 'Удалить товар' }}</app-btn>
     </div>
   </div>
   <!-- </router-link> -->
@@ -28,6 +28,7 @@
   // import { mapGetters } from 'vuex';
   // import { mapMutations } from 'vuex';
 import { mapActions } from 'vuex';
+// import { eventBus } from '../../main.js';
 // import * as types from '../../store/types.js';
 import Btn from './Btn.vue';
 
@@ -35,43 +36,29 @@ export default {
     props: ['item'],
     data() {
       return {
-        quantity: 0
+        quantity: this.item.quantity
       }
-    },
-    computed: {
-      // counter1() {
-      //   return this.$store.state.counter;
-      // },
-      // ...mapGetters({
-      //   counter: types.COUNTER
-      // })
-    },
-    created() {
-      // eventBus.$on('selectPage', (page) => {
-      //   this.selectedPage = page;
-      //   console.log(this.selectedPage);
-      // })
     },
     methods: {
         ...mapActions([
             'delProduct'
         ]),
-        addToCart() {
-            console.log('add to cart');
+        removeFromCart() {
+            console.log('remove from cart');
             const order = {
                 id: this.item.id,
                 price: this.item.price,
                 quantity: this.quantity
             }
             console.log(order);
-            this.$store.dispatch('buyProduct', order);
+            this.delProduct(order);
             this.quantity = 0;
         },
         increment() {
             this.quantity++;
         },
         decrement() {
-            if (this.quantity > 0) {
+            if (this.quantity > 0 ) {
                 this.quantity--;
             }
         }

@@ -17,13 +17,15 @@ const mutations = {
 		state.total += price * quantity;
 	},
 	'DEL_PRODUCT' (state,  {id, quantity, price}) {
-		const record = state.products.find(element => element.id === id);
-		if (record.quantity > quantity) {
-			record.quantity -= quantity;
-		} else {
-			state.products.splice(state.products.indexOf(record), 1);
+		if (state.products.length) {
+			const record = state.products.find(element => element.id === id);
+			if (record.quantity > quantity) {
+				record.quantity -= quantity;
+			} else {
+				state.products.splice(state.products.indexOf(record), 1);
+			}
+			state.total -= price * quantity;
 		}
-		state.total -= price * quantity;
 	}
 };
 

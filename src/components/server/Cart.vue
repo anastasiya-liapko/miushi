@@ -8,8 +8,12 @@
           <!-- <h2 class="title">Ваш заказ</h2> -->
           <app-title>{{ 'Ваш заказ' }}</app-title>
           <div v-for="item in items">
-              <app-item class="item_cart" :item="item"></app-item>
+              <app-item-order class="item_cart" :item="item"></app-item-order>
           </div>
+
+          <br>
+
+          <p>{{ total }}</p>
         </div>
         
 
@@ -158,7 +162,7 @@
   import Select from '../global/Select.vue';
   import Btn from '../global/Btn.vue';
   import Title from '../global/Title.vue';
-  import Item from '../global/Item.vue';
+  import ItemOrder from '../global/ItemOrder.vue';
 
 
   export default {
@@ -184,7 +188,8 @@
     },
     computed: {
         ...mapGetters({
-            items: 'order'
+            items: 'order',
+            total: 'total'
         }),
         delivery: function() {
             return this.userData.delivery = this.object.name;
@@ -230,7 +235,7 @@
         'app-select': Select,
         'app-btn': Btn,
         'app-title': Title,
-        'app-item': Item
+        'app-item-order': ItemOrder
     }
   }
 </script>
