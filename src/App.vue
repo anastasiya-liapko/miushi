@@ -144,6 +144,12 @@
   .input_white
     border-bottom: 1px solid rgb(255, 255, 255)
 
+  .input.invalid
+    border-bottom: 1px solid red
+
+  .checkbox.invalid
+    color: red
+
   .textarea
     width: 100%
     height: 150px

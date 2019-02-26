@@ -14,7 +14,9 @@ import VueRouter from 'vue-router';
 import { routes } from './routes.js';
 
 // npm install vue-resource
-import VueResource from 'vue-resource';
+// import VueResource from 'vue-resource';
+// npm install axios
+// import axios from 'axios';
 
 import { store } from './store/store.js';
 
@@ -41,7 +43,7 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
-Vue.use(VueResource);
+// Vue.use(VueResource);
 Vue.use(Vuelidate);
 Vue.use(PrettyCheckbox);
 Vue.use(VueAwesomeSwiper);
@@ -95,6 +97,18 @@ const router = new VueRouter({
 });
 
 
+// axios.defaults.headers.common['Autorization'] = '111';
+// axios.defaults.headers.get['Accepts'] = 'application/json';
+// axios.interceptors.request.use(config => {
+//   console.log('request ' + config);
+//   return config;
+// });
+// axios.interceptors.response.use(res => {
+//   console.log('response ' + res);
+//   return res;
+// });
+
+
 new Vue({
   el: '#app',
   router,
@@ -102,9 +116,9 @@ new Vue({
   render: h => h(App)
 })
 
-
-Vue.http.options.emulateJSON = true; // without $ ($ is used when accessing from vue instance)
-Vue.http.options.emulateHTTP = true; // without $ ($ is used when accessing from vue instance)
+// without $ ($ is used when accessing from vue instance)
+// Vue.http.options.emulateJSON = true;
+// Vue.http.options.emulateHTTP = true;
 
 
 
